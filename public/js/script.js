@@ -67,6 +67,8 @@ function _isHostAccess() {
 function _showLockedPage(reason) {
   function _applyLock() {
     document.querySelectorAll('body > *:not(#inviteLockScreen)').forEach(el => {
+      // Never hide the audio element — music must survive the lock screen
+      if (el.id === 'bgMusic' || el.tagName === 'AUDIO') return;
       el.style.display = 'none';
     });
 
@@ -143,7 +145,8 @@ function _lockScreenHTML(reason) {
 // MUSIC CONTROL
 // -----------------------------------------------
 let isPlaying = false;
- 
+let _musicUnlocked = false;
+
 function _syncMusicUI() {
   const btn = document.getElementById('musicBtn');
   const soundWaves = document.getElementById('soundWaves');
@@ -151,70 +154,65 @@ function _syncMusicUI() {
   if (isPlaying) {
     btn.setAttribute('aria-label', 'Pause music');
     if (soundWaves) soundWaves.style.display = 'block';
-    btn.classList.add('playing'); // Toggles a class in case your CSS uses it
   } else {
     btn.setAttribute('aria-label', 'Play music');
     if (soundWaves) soundWaves.style.display = 'none';
-    btn.classList.remove('playing');
   }
 }
- 
+
 function startMusicIfNeeded() {
+  if (_musicUnlocked) return;
   const bgMusic = document.getElementById('bgMusic');
-  if (isPlaying || !bgMusic) return;
+  if (!bgMusic) {
+    // Element not in DOM yet (e.g. during token fetch) — retry shortly
+    setTimeout(startMusicIfNeeded, 300);
+    return;
+  }
   bgMusic.play()
-    .then(() => { 
-      isPlaying = true;  
-      _syncMusicUI(); 
+    .then(() => {
+      isPlaying = true;
+      _musicUnlocked = true;
+      _syncMusicUI();
+      _removeInteractionListeners();
     })
-    .catch(() => { 
-      isPlaying = false; 
-      _syncMusicUI(); 
+    .catch(() => {
+      // Autoplay blocked — will retry on next interaction
     });
 }
- 
+
 window.toggleMusic = function() {
   const bgMusic = document.getElementById('bgMusic');
   if (!bgMusic) return;
-
   if (isPlaying) {
     bgMusic.pause();
     isPlaying = false;
-    _syncMusicUI();
   } else {
-    // Fixed: Wrapping play inside a promise sequence so state stays 
-    // accurate even if the browser blocks execution initially.
     bgMusic.play()
-      .then(() => {
-        isPlaying = true;
-        _syncMusicUI();
-      })
-      .catch((err) => {
-        console.warn("Playback prevented by browser policy:", err);
-        isPlaying = false;
-        _syncMusicUI();
-      });
+      .then(() => { isPlaying = true; _musicUnlocked = true; })
+      .catch(() => {});
   }
+  _syncMusicUI();
 };
- 
-// Initial automatic attempt after a brief loading buffer
-setTimeout(startMusicIfNeeded, 800);
- 
-// Safe triggers to catch modern browser autoplay bypass rules
-window.addEventListener('scroll', function _onScrollPlay() {
-  startMusicIfNeeded();
-  window.removeEventListener('scroll', _onScrollPlay);
-}, { passive: true });
- 
-document.addEventListener('click', function _onClickPlay() {
-  startMusicIfNeeded();
-  document.removeEventListener('click', _onClickPlay);
-}, { once: true });
- 
-document.addEventListener('mouseover', function _onHoverPlay() {
-  startMusicIfNeeded();
-  document.removeEventListener('mouseover', _onHoverPlay);
-}, { once: true });
+
+// ── Interaction listeners that trigger autoplay ──────────────────
+// Browsers (and especially mobile) require a genuine user gesture
+// before audio can play. Deployed servers (Render, Vercel, etc.)
+// enforce this strictly. We listen on scroll, click, and touchstart
+// so the first real interaction — on any device — starts the music.
+
+function _removeInteractionListeners() {
+  window.removeEventListener('scroll',      _onScrollPlay);
+  document.removeEventListener('click',     _onClickPlay);
+  document.removeEventListener('touchstart', _onTouchPlay);
+}
+
+function _onScrollPlay()  { startMusicIfNeeded(); }
+function _onClickPlay()   { startMusicIfNeeded(); }
+function _onTouchPlay()   { startMusicIfNeeded(); }
+
+window.addEventListener('scroll',       _onScrollPlay,  { passive: true });
+document.addEventListener('click',      _onClickPlay,   { once: true });
+document.addEventListener('touchstart', _onTouchPlay,   { once: true, passive: true });
 
 // -----------------------------------------------
 // COUNTDOWN TIMER
