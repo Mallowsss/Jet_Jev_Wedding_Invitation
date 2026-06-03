@@ -1,4 +1,4 @@
- <!-- FINAL COPY -->
+<!-- FINAL COPY -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -23,6 +23,7 @@
       <li><a href="#" class="nav-link" data-tab="prenup">Prenup Photos</a></li>
       <li><a href="#" class="nav-link" data-tab="nearby">Things to do Nearby</a></li>
       <li><a href="#" class="nav-link" data-tab="faqs">FAQs</a></li>
+      <li><a href="#" class="nav-link" data-tab="sponsors">Sponsors</a></li>
     </ul>
 
     <!-- Right: Hashtag pill only -->
@@ -39,16 +40,17 @@
     </button>
   </nav>
 
+  <!-- Floating Music Button (below header, ~top-28) -->
   <button class="floating-music-btn" id="musicBtn" aria-label="Toggle music" onclick="toggleMusic()">
-  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-    <path d="M11 5L6 9H2v6h4l5 4V5z"/>
-    <path id="soundWaves" d="M19.07 4.93a10 10 0 0 1 0 14.14M15.54 8.46a5 5 0 0 1 0 7.07"/>
-  </svg>
-</button>
-
-<audio id="bgMusic" loop preload="auto">
+    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+      <path d="M11 5L6 9H2v6h4l5 4V5z"/>
+      <path id="soundWaves" d="M19.07 4.93a10 10 0 0 1 0 14.14M15.54 8.46a5 5 0 0 1 0 7.07"/>
+    </svg>
+    
+    <audio id="bgMusic" loop>
   <source src="song/bluer.mp3" type="audio/mpeg">
-</audio>
+  </audio>
+  </button>
 
   <!-- Mobile Nav Drawer -->
   <div class="mobile-nav" id="mobileNav">
@@ -57,6 +59,7 @@
     <a href="#" class="mobile-link" data-tab="prenup">Prenup Photos</a>
     <a href="#" class="mobile-link" data-tab="nearby">Things to do Nearby</a>
     <a href="#" class="mobile-link" data-tab="faqs">FAQs</a>
+    <a href="#" class="mobile-link" data-tab="sponsors">Sponsors</a>
     <button class="mobile-hashtag-btn" onclick="shareHashtag()">
       <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"/><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"/></svg>
       #VERLYNfoundherTHROlove
@@ -819,6 +822,178 @@
       <p class="footer-details">June 29, 2026 • City Garden Suites, Manila</p>
     </footer>
   </div><!-- /tab-faqs -->
+
+
+  <!-- ═══════════════════════════════════════════════════════════════════════
+       TAB: SPONSORS
+       ═══════════════════════════════════════════════════════════════════════ -->
+  <div class="tab-panel" id="tab-sponsors">
+    <div class="inner-header">
+      <div class="inner-icon reveal-scale">
+        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+      </div>
+      <h1 class="inner-title reveal">Our Sponsors</h1>
+      <p class="inner-subtitle reveal">This celebration would not have been possible without the generous love and support of these wonderful people</p>
+    </div>
+
+    <div class="inner-body">
+
+      <!-- PRINCIPAL SPONSORS -->
+      <div class="sponsors-section reveal">
+        <div class="sponsors-tier-label sponsors-tier-principal">
+          <span class="sponsors-tier-icon">👑</span>
+          Principal Sponsors
+        </div>
+        <p class="sponsors-tier-desc">Our principal sponsors blessed our union and guided us as we begin this new chapter</p>
+        <div class="sponsors-grid sponsors-grid-principal">
+
+          <div class="sponsor-card sponsor-card-principal reveal">
+            <div class="sponsor-avatar sponsor-avatar-principal">
+              <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.8"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+            </div>
+            <div class="sponsor-info">
+              <h3 class="sponsor-name">Name Here</h3>
+              <p class="sponsor-role">Cord Sponsors</p>
+              <p class="sponsor-contribution">Symbolized the binding of two lives together as one</p>
+            </div>
+          </div>
+
+          <div class="sponsor-card sponsor-card-principal reveal">
+            <div class="sponsor-avatar sponsor-avatar-principal">
+              <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.8"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+            </div>
+            <div class="sponsor-info">
+              <h3 class="sponsor-name">Name Here</h3>
+              <p class="sponsor-role">Veil Sponsors</p>
+              <p class="sponsor-contribution">Draped us in blessing and unity on our special day</p>
+            </div>
+          </div>
+
+          <div class="sponsor-card sponsor-card-principal reveal">
+            <div class="sponsor-avatar sponsor-avatar-principal">
+              <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.8"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+            </div>
+            <div class="sponsor-info">
+              <h3 class="sponsor-name">Name Here</h3>
+              <p class="sponsor-role">Sponsors</p>
+              <p class="sponsor-contribution">Lit the way as we walk into a shared future</p>
+            </div>
+          </div>
+
+          <div class="sponsor-card sponsor-card-principal reveal">
+            <div class="sponsor-avatar sponsor-avatar-principal">
+              <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.8"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+            </div>
+            <div class="sponsor-info">
+              <h3 class="sponsor-name">Name Here</h3>
+              <p class="sponsor-role">Sponsor</p>
+              <p class="sponsor-contribution">Graced our wedding with wisdom, love, and presence</p>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- DIVIDER -->
+      <div class="sponsors-divider reveal">
+        <span class="sponsors-divider-line"></span>
+        <span class="sponsors-divider-icon">💙</span>
+        <span class="sponsors-divider-line"></span>
+      </div>
+
+      <!-- SECONDARY SPONSORS -->
+      <div class="sponsors-section reveal">
+        <div class="sponsors-tier-label sponsors-tier-secondary">
+          <span class="sponsors-tier-icon">🌸</span>
+          Secondary Sponsors
+        </div>
+        <p class="sponsors-tier-desc">Their kindness and generosity made every detail of this day possible</p>
+        <div class="sponsors-grid sponsors-grid-secondary">
+
+          <div class="sponsor-card sponsor-card-secondary reveal">
+            <div class="sponsor-avatar sponsor-avatar-secondary">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.8"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+            </div>
+            <div class="sponsor-info">
+              <h3 class="sponsor-name">Name Here</h3>
+              <p class="sponsor-role">Bible & Rings Bearer</p>
+              <p class="sponsor-contribution">Carried the sacred symbols of our vows with care</p>
+            </div>
+          </div>
+
+          <div class="sponsor-card sponsor-card-secondary reveal">
+            <div class="sponsor-avatar sponsor-avatar-secondary">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.8"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+            </div>
+            <div class="sponsor-info">
+              <h3 class="sponsor-name">Name Here</h3>
+              <p class="sponsor-role">Flower Girl</p>
+              <p class="sponsor-contribution">Scattered petals and joy along the aisle</p>
+            </div>
+          </div>
+
+          <div class="sponsor-card sponsor-card-secondary reveal">
+            <div class="sponsor-avatar sponsor-avatar-secondary">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.8"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+            </div>
+            <div class="sponsor-info">
+              <h3 class="sponsor-name">Name Here</h3>
+              <p class="sponsor-role">Secondary Sponsor</p>
+              <p class="sponsor-contribution">Contributed to making this celebration beautiful</p>
+            </div>
+          </div>
+
+          <div class="sponsor-card sponsor-card-secondary reveal">
+            <div class="sponsor-avatar sponsor-avatar-secondary">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.8"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+            </div>
+            <div class="sponsor-info">
+              <h3 class="sponsor-name">Name Here</h3>
+              <p class="sponsor-role">Secondary Sponsor</p>
+              <p class="sponsor-contribution">Contributed to making this celebration beautiful</p>
+            </div>
+          </div>
+
+          <div class="sponsor-card sponsor-card-secondary reveal">
+            <div class="sponsor-avatar sponsor-avatar-secondary">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.8"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+            </div>
+            <div class="sponsor-info">
+              <h3 class="sponsor-name">Name Here</h3>
+              <p class="sponsor-role">Secondary Sponsor</p>
+              <p class="sponsor-contribution">Contributed to making this celebration beautiful</p>
+            </div>
+          </div>
+
+          <div class="sponsor-card sponsor-card-secondary reveal">
+            <div class="sponsor-avatar sponsor-avatar-secondary">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.8"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+            </div>
+            <div class="sponsor-info">
+              <h3 class="sponsor-name">Name Here</h3>
+              <p class="sponsor-role">Secondary Sponsor</p>
+              <p class="sponsor-contribution">Contributed to making this celebration beautiful</p>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- CLOSING THANK YOU -->
+      <div class="sponsors-thankyou reveal">
+        <div class="sponsors-thankyou-heart">💙</div>
+        <h3>From the Bottom of Our Hearts</h3>
+        <p>To everyone who stood beside us, contributed to our day, or simply sent prayers and love our way — thank you. You are part of our story forever.</p>
+        <p class="sponsors-hashtag">#VERLYNfoundherTHROlove</p>
+      </div>
+
+    </div>
+
+    <footer>
+      <p>Made with love — Jet &amp; Jev</p>
+      <p class="footer-details">June 29, 2026 • City Garden Suites, Manila</p>
+    </footer>
+  </div><!-- /tab-sponsors -->
 
 
   <!-- Toast -->
