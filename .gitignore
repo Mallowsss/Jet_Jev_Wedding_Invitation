@@ -1,0 +1,4 @@
+node_modules/
+.env
+# guest-links.txt contains personal URLs — don't commit to public repos
+guest-links.txt
