@@ -77,7 +77,7 @@ section {
             rgba(102, 118, 134, 0.4) 0%,
             rgba(151, 173, 194, 0.3) 100%
         ),
-        url("../home_photo/ADM06597_c_edit.jpg") center / cover no-repeat;
+        url("../home_photo/ADM06597_c_edit.JPG") center / cover no-repeat;
     position: relative;
     overflow: hidden;
     color: white;
@@ -2200,3 +2200,234 @@ footer .footer-details { font-size: 0.875rem; opacity: 0.8; }
 .lightbox-prev:hover, .lightbox-next:hover { background: rgba(255,255,255,0.3); }
 .lightbox-prev { left: 1.2rem; }
 .lightbox-next { right: 1.2rem; }
+/* =============================================
+   SPONSORS TAB
+   ============================================= */
+
+.sponsors-section {
+  margin-bottom: 3rem;
+}
+
+.sponsors-tier-label {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  padding: 0.55rem 1.4rem;
+  border-radius: 50px;
+  font-family: var(--font-display);
+  font-size: 1.35rem;
+  font-weight: 600;
+  margin-bottom: 0.75rem;
+  letter-spacing: 0.01em;
+}
+
+.sponsors-tier-principal {
+  background: linear-gradient(135deg, var(--dark-blue) 0%, #4a5f72 100%);
+  color: #fff;
+  box-shadow: 0 4px 18px rgba(102, 118, 134, 0.28);
+}
+
+.sponsors-tier-secondary {
+  background: linear-gradient(135deg, var(--medium-blue) 0%, #6b96b8 100%);
+  color: #fff;
+  box-shadow: 0 4px 18px rgba(151, 173, 194, 0.28);
+}
+
+.sponsors-tier-icon {
+  font-size: 1.15rem;
+  line-height: 1;
+}
+
+.sponsors-tier-desc {
+  color: var(--medium-grey);
+  font-size: 0.95rem;
+  margin-bottom: 1.75rem;
+  line-height: 1.6;
+  padding-left: 0.25rem;
+}
+
+/* ── Principal grid: 2-col on desktop ── */
+.sponsors-grid-principal {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1.25rem;
+}
+
+/* ── Secondary grid: 3-col on desktop ── */
+.sponsors-grid-secondary {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1rem;
+}
+
+/* ── Shared card base ── */
+.sponsor-card {
+  background: #fff;
+  border-radius: 16px;
+  padding: 1.5rem 1.4rem;
+  display: flex;
+  align-items: flex-start;
+  gap: 1rem;
+  border: 1px solid #e8edf2;
+  transition: box-shadow 0.25s ease, transform 0.25s ease;
+}
+
+.sponsor-card:hover {
+  box-shadow: 0 8px 28px rgba(102, 118, 134, 0.15);
+  transform: translateY(-3px);
+}
+
+/* ── Principal card: slightly elevated ── */
+.sponsor-card-principal {
+  border-left: 4px solid var(--dark-blue);
+  background: linear-gradient(135deg, #fff 0%, #f3f7fb 100%);
+  padding: 1.75rem 1.5rem;
+}
+
+.sponsor-card-secondary {
+  border-left: 3px solid var(--medium-blue);
+  background: #fff;
+}
+
+/* ── Avatars ── */
+.sponsor-avatar {
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.sponsor-avatar-principal {
+  width: 56px;
+  height: 56px;
+  background: linear-gradient(135deg, var(--dark-blue) 0%, #4a5f72 100%);
+  box-shadow: 0 4px 12px rgba(102, 118, 134, 0.3);
+}
+
+.sponsor-avatar-secondary {
+  width: 46px;
+  height: 46px;
+  background: linear-gradient(135deg, var(--medium-blue) 0%, #6b96b8 100%);
+  box-shadow: 0 3px 10px rgba(151, 173, 194, 0.3);
+}
+
+.sponsor-info {
+  flex: 1;
+  min-width: 0;
+}
+
+.sponsor-name {
+  font-family: var(--font-display);
+  font-size: 1.1rem;
+  color: var(--dark-grey);
+  margin-bottom: 0.2rem;
+  line-height: 1.3;
+}
+
+.sponsor-card-principal .sponsor-name {
+  font-size: 1.2rem;
+  color: var(--dark-blue);
+}
+
+.sponsor-role {
+  font-size: 0.78rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.07em;
+  color: var(--medium-blue);
+  margin-bottom: 0.45rem;
+}
+
+.sponsor-card-principal .sponsor-role {
+  color: var(--dark-blue);
+}
+
+.sponsor-contribution {
+  font-size: 0.88rem;
+  color: var(--medium-grey);
+  line-height: 1.55;
+  margin: 0;
+}
+
+/* ── Divider between tiers ── */
+.sponsors-divider {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin: 2.5rem 0;
+}
+
+.sponsors-divider-line {
+  flex: 1;
+  height: 1px;
+  background: linear-gradient(to right, transparent, #d1dce6, transparent);
+}
+
+.sponsors-divider-icon {
+  font-size: 1.3rem;
+  flex-shrink: 0;
+}
+
+/* ── Thank-you closing block ── */
+.sponsors-thankyou {
+  text-align: center;
+  background: linear-gradient(135deg, #f3f7fb 0%, #eaf0f6 100%);
+  border-radius: 20px;
+  padding: 3rem 2rem;
+  margin-top: 2rem;
+  border: 1px solid #dce6ef;
+}
+
+.sponsors-thankyou-heart {
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+}
+
+.sponsors-thankyou h3 {
+  font-family: var(--font-display);
+  font-size: 1.6rem;
+  color: var(--dark-blue);
+  margin-bottom: 0.75rem;
+}
+
+.sponsors-thankyou p {
+  color: var(--medium-grey);
+  font-size: 1rem;
+  line-height: 1.7;
+  max-width: 540px;
+  margin: 0 auto 0.5rem;
+}
+
+.sponsors-hashtag {
+  font-family: var(--font-display);
+  font-size: 1rem !important;
+  color: var(--medium-blue) !important;
+  font-style: italic;
+  margin-top: 1.25rem !important;
+}
+
+/* ── Responsive ── */
+@media (max-width: 768px) {
+  .sponsors-grid-principal {
+    grid-template-columns: 1fr;
+  }
+  .sponsors-grid-secondary {
+    grid-template-columns: 1fr;
+  }
+  .sponsors-tier-label {
+    font-size: 1.1rem;
+  }
+  .sponsor-card-principal {
+    padding: 1.35rem 1.2rem;
+  }
+  .sponsors-thankyou {
+    padding: 2rem 1.25rem;
+  }
+}
+
+@media (min-width: 769px) and (max-width: 1024px) {
+  .sponsors-grid-secondary {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
