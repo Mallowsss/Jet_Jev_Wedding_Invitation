@@ -1,0 +1,517 @@
+[
+  {
+    "name": "Jethro Del Rosario",
+    "category": "GROOM",
+    "table": 1
+  },
+  {
+    "name": "Jeverlyn Labasan",
+    "category": "BRIDE",
+    "table": 1
+  },
+  {
+    "name": "Vince Josol",
+    "category": "DIRECTOR",
+    "table": 1
+  },
+  {
+    "name": "Anthony Sanoy",
+    "category": "COORDINATOR",
+    "table": 1
+  },
+  {
+    "name": "Ron Delos Reyes",
+    "category": "CHAIRMAN",
+    "table": 1
+  },
+  {
+    "name": "Philip Amores",
+    "category": "WITNESS/ES",
+    "table": 2
+  },
+  {
+    "name": "Jessa Bacani",
+    "category": "WITNESS/ES",
+    "table": 2
+  },
+  {
+    "name": "JP Bacani",
+    "category": "PARTNER OF WITNESS/ES",
+    "table": 1
+  },
+  {
+    "name": "EJ Bacani",
+    "category": "RING BEARER",
+    "table": 1
+  },
+  {
+    "name": "Joey Del Rosario",
+    "category": "PARENTS OF THE GROOM",
+    "table": 2
+  },
+  {
+    "name": "Emily Del Rosario",
+    "category": "PARENTS OF THE GROOM",
+    "table": 2
+  },
+  {
+    "name": "Terry Labasan",
+    "category": "PARENTS OF THE BRIDE",
+    "table": 2
+  },
+  {
+    "name": "Flor Labasan",
+    "category": "PARENTS OF THE BRIDE",
+    "table": 2
+  },
+  {
+    "name": "Giezel Labasan",
+    "category": "MAID OF HONOR",
+    "table": 1
+  },
+  {
+    "name": "Andrei Labasan",
+    "category": "BRIDESMAID",
+    "table": 3
+  },
+  {
+    "name": "Joana Labasan",
+    "category": "BRIDESMAID",
+    "table": 3
+  },
+  {
+    "name": "Jessa Labasan",
+    "category": "BRIDESMAID",
+    "table": 3
+  },
+  {
+    "name": "Janus Del Rosario",
+    "category": "GROOMSMEN",
+    "table": 3
+  },
+  {
+    "name": "Larry Pascua",
+    "category": "GROOMSMEN",
+    "table": 3
+  },
+  {
+    "name": "Jude Castro",
+    "category": "GROOMSMEN",
+    "table": 3
+  },
+  {
+    "name": "Matt Fajarit",
+    "category": "BIBLE BEARER",
+    "table": 1
+  },
+  {
+    "name": "Arianne Del Rosario",
+    "category": "FLOWER GIRL",
+    "table": 2
+  },
+  {
+    "name": "Athena Del Rosario",
+    "category": "FLOWER GIRL",
+    "table": 2
+  },
+  {
+    "name": "Janine Pascual",
+    "category": "GROOM'S FAMILY",
+    "table": 13
+  },
+  {
+    "name": "Mark Pascual",
+    "category": "GROOM'S FAMILY",
+    "table": 13
+  },
+  {
+    "name": "Jewel Del Rosario",
+    "category": "GROOM'S FAMILY",
+    "table": 13
+  },
+  {
+    "name": "Ernesto Fajarit",
+    "category": "GROOM'S FAMILY",
+    "table": 13
+  },
+  {
+    "name": "Jhen Del Rosario",
+    "category": "GROOM'S FAMILY",
+    "table": 13
+  },
+  {
+    "name": "EJ Del Rosario",
+    "category": "GROOM'S FAMILY",
+    "table": 13
+  },
+  {
+    "name": "Liza Ormoc",
+    "category": "GROOM'S FAMILY",
+    "table": 13
+  },
+  {
+    "name": "Inang",
+    "category": "BRIDE'S FAMILY",
+    "table": 20
+  },
+  {
+    "name": "Liza Cabanting",
+    "category": "BRIDE'S FAMILY",
+    "table": 20
+  },
+  {
+    "name": "Ashley Cabanting",
+    "category": "BRIDE'S FAMILY",
+    "table": 20
+  },
+  {
+    "name": "Zefania Manganaan",
+    "category": "BRIDE'S FAMILY",
+    "table": 20
+  },
+  {
+    "name": "Reynan Medina",
+    "category": "BRIDE'S FAMILY",
+    "table": 20
+  },
+  {
+    "name": "Reynavhel Medina",
+    "category": "BRIDE'S FAMILY",
+    "table": 20
+  },
+  {
+    "name": "Kim  Laynesa",
+    "category": "BRIDE'S FAMILY",
+    "table": 20
+  },
+  {
+    "name": "Keren Laynesa",
+    "category": "BRIDE'S FAMILY",
+    "table": 20
+  },
+  {
+    "name": "Boy Labasan",
+    "category": "BRIDE'S FAMILY",
+    "table": 20
+  },
+  {
+    "name": "Melanie Labasan",
+    "category": "BRIDE'S FAMILY",
+    "table": 20
+  },
+  {
+    "name": "Baby Sales",
+    "category": "BRIDE'S FAMILY",
+    "table": 20
+  },
+  {
+    "name": "Chito Labasan",
+    "category": "BRIDE'S FAMILY",
+    "table": 20
+  },
+  {
+    "name": "Esther Quizmundo",
+    "category": "BRIDE'S FAMILY",
+    "table": 20
+  },
+  {
+    "name": "Esther's Husband",
+    "category": "BRIDE'S FAMILY",
+    "table": 20
+  },
+  {
+    "name": "Helen Sales",
+    "category": "BRIDE'S FAMILY",
+    "table": 20
+  },
+  {
+    "name": "Venus Casareno",
+    "category": "BRIDE'S FAMILY",
+    "table": 20
+  },
+  {
+    "name": "Rijean Ramirez-ilagan",
+    "category": "MAKE UP ARTIST",
+    "table": 2
+  },
+  {
+    "name": "Begs Ilagan",
+    "category": "MAKE UP ARTIST",
+    "table": 2
+  },
+  {
+    "name": "CO",
+    "category": "JW",
+    "table": 26
+  },
+  {
+    "name": "CO's Wife",
+    "category": "JW",
+    "table": 26
+  },
+  {
+    "name": "Inah Kharis Ramirez",
+    "category": "JW",
+    "table": 26
+  },
+  {
+    "name": "JP Ramirez",
+    "category": "JW",
+    "table": 26
+  },
+  {
+    "name": "Neomi Caparos",
+    "category": "JW",
+    "table": 26
+  },
+  {
+    "name": "Anthony Caparos",
+    "category": "JW",
+    "table": 26
+  },
+  {
+    "name": "Lalaine Rojo",
+    "category": "JW",
+    "table": 26
+  },
+  {
+    "name": "Ric Rojo",
+    "category": "JW",
+    "table": 26
+  },
+  {
+    "name": "Edward Villegas",
+    "category": "JW",
+    "table": 26
+  },
+  {
+    "name": "Loida Villegas",
+    "category": "JW",
+    "table": 26
+  },
+  {
+    "name": "Abi Muana",
+    "category": "JW",
+    "table": 26
+  },
+  {
+    "name": "Muana",
+    "category": "JW",
+    "table": 26
+  },
+  {
+    "name": "Vangie Dorado",
+    "category": "JW",
+    "table": 26
+  },
+  {
+    "name": "April Hernandez",
+    "category": "JW",
+    "table": 26
+  },
+  {
+    "name": "Roselyn Rabastro",
+    "category": "JW",
+    "table": 26
+  },
+  {
+    "name": "Ruth Vidar",
+    "category": "JW",
+    "table": 26
+  },
+  {
+    "name": "Juvy Taburnal",
+    "category": "JW",
+    "table": 26
+  },
+  {
+    "name": "Janine Sanoy",
+    "category": "JW",
+    "table": 26
+  },
+  {
+    "name": "Anie Sanoy",
+    "category": "JW",
+    "table": 26
+  },
+  {
+    "name": "Beth Marcelo",
+    "category": "JW",
+    "table": 26
+  },
+  {
+    "name": "Badet Marcelo",
+    "category": "JW",
+    "table": 26
+  },
+  {
+    "name": "JC Arcipe",
+    "category": "JW",
+    "table": 26
+  },
+  {
+    "name": "Ralph Rabastro",
+    "category": "USHER",
+    "table": 3
+  },
+  {
+    "name": "Alexis Rabastro",
+    "category": "USHER",
+    "table": 3
+  },
+  {
+    "name": "Roberto Ignacio",
+    "category": "USHER",
+    "table": 3
+  },
+  {
+    "name": "Mark Roland Dianopra",
+    "category": "GROOM'S FRIEND",
+    "table": 1
+  },
+  {
+    "name": "Alicia Guden",
+    "category": "JW",
+    "table": 26
+  },
+  {
+    "name": "Vim Caamud",
+    "category": "JW",
+    "table": 26
+  },
+  {
+    "name": "Coleen Quilang",
+    "category": "JW",
+    "table": 26
+  },
+  {
+    "name": "Shei Josol",
+    "category": "JW",
+    "table": 26
+  },
+  {
+    "name": "LABASAN- Pasay",
+    "category": "BRIDE'S FAMILY",
+    "table": 20
+  },
+  {
+    "name": "LABASAN- Pasay",
+    "category": "BRIDE'S FAMILY",
+    "table": 20
+  },
+  {
+    "name": "LABASAN- Pasay",
+    "category": "BRIDE'S FAMILY",
+    "table": 20
+  },
+  {
+    "name": "LABASAN- Pasay",
+    "category": "BRIDE'S FAMILY",
+    "table": 20
+  },
+  {
+    "name": "LABASAN- Pasay",
+    "category": "BRIDE'S FAMILY",
+    "table": 20
+  },
+  {
+    "name": "DEL ROSARIO-UK",
+    "category": "GROOM'S FAMILY",
+    "table": 13
+  },
+  {
+    "name": "DEL ROSARIO-UK",
+    "category": "GROOM'S FAMILY",
+    "table": 13
+  },
+  {
+    "name": "DEL ROSARIO-UK",
+    "category": "GROOM'S FAMILY",
+    "table": 13
+  },
+  {
+    "name": "DEL ROSARIO-UK",
+    "category": "GROOM'S FAMILY",
+    "table": 13
+  },
+  {
+    "name": "DEL ROSARIO-UK",
+    "category": "GROOM'S FAMILY",
+    "table": 13
+  },
+  {
+    "name": "Mama's Boss",
+    "category": "Mama' Boss",
+    "table": 6
+  },
+  {
+    "name": "Mama's Boss",
+    "category": "Mama' Boss",
+    "table": 6
+  },
+  {
+    "name": "Mama's Boss",
+    "category": "Mama' Boss",
+    "table": 6
+  },
+  {
+    "name": "Mama's Boss",
+    "category": "Mama' Boss",
+    "table": 6
+  },
+  {
+    "name": "Mama's Boss",
+    "category": "Mama' Boss",
+    "table": 6
+  },
+  {
+    "name": "Mama's Boss",
+    "category": "Mama' Boss",
+    "table": 6
+  },
+  {
+    "name": "Joyce Estrologo",
+    "category": "BRIDE'S FRIEND",
+    "table": 6
+  },
+  {
+    "name": "Danna Docot",
+    "category": "BRIDE'S FRIEND",
+    "table": 6
+  },
+  {
+    "name": "Ef Sarabosing",
+    "category": "BRIDE'S FRIEND",
+    "table": 6
+  },
+  {
+    "name": "Iseine Bocalan",
+    "category": "BRIDE'S FRIEND",
+    "table": 6
+  },
+  {
+    "name": "Christine Mehoy",
+    "category": "BRIDE'S FRIEND",
+    "table": 6
+  },
+  {
+    "name": "Elizabeth Mercado",
+    "category": "BRIDE'S FRIEND",
+    "table": 6
+  },
+  {
+    "name": "Chloe Fajarit",
+    "category": "",
+    "table": null
+  },
+  {
+    "name": "Kira Medina",
+    "category": "",
+    "table": null
+  },
+  {
+    "name": "Vilma medina",
+    "category": "",
+    "table": null
+  }
+]
