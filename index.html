@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Jet & Jev - Wedding Invitation</title>
+  <link rel="stylesheet" href="css/loading-styles.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&display=swap" rel="stylesheet" />
+</head>
+<body>
+
+  <!-- ===================== SCREEN 1: LOADING ===================== -->
+  <div id="screen-loading" class="screen screen-active">
+    <!-- Floating sparkles background -->
+    <div id="loading-sparkles" class="sparkles-container"></div>
+
+    <!-- Main content -->
+    <div class="loading-content">
+      <!-- Top decorative line -->
+      <div class="deco-line deco-line-top"></div>
+
+      <!-- Heart ornament -->
+      <div class="heart-ornament" id="loading-heart-ornament">
+        <div class="heart-center">
+          <!-- SVG Heart -->
+          <svg class="heart-icon-main" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z" fill="rgba(255,255,255,0.9)" stroke="rgba(255,255,255,0.6)" stroke-width="1"/>
+          </svg>
+        </div>
+        <!-- Orbiting small hearts -->
+        <div class="orbiting-hearts" id="orbiting-hearts">
+          <svg class="orbit-heart orbit-heart-1" viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z" fill="rgba(255,255,255,0.3)" stroke="rgba(255,255,255,0.5)" stroke-width="1.5"/></svg>
+          <svg class="orbit-heart orbit-heart-2" viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z" fill="rgba(255,255,255,0.3)" stroke="rgba(255,255,255,0.5)" stroke-width="1.5"/></svg>
+          <svg class="orbit-heart orbit-heart-3" viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z" fill="rgba(255,255,255,0.3)" stroke="rgba(255,255,255,0.5)" stroke-width="1.5"/></svg>
+          <svg class="orbit-heart orbit-heart-4" viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z" fill="rgba(255,255,255,0.3)" stroke="rgba(255,255,255,0.5)" stroke-width="1.5"/></svg>
+          <svg class="orbit-heart orbit-heart-5" viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z" fill="rgba(255,255,255,0.3)" stroke="rgba(255,255,255,0.5)" stroke-width="1.5"/></svg>
+          <svg class="orbit-heart orbit-heart-6" viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z" fill="rgba(255,255,255,0.3)" stroke="rgba(255,255,255,0.5)" stroke-width="1.5"/></svg>
+        </div>
+      </div>
+
+      <!-- Title -->
+      <div class="loading-text-wrap">
+        <h2 class="loading-title">Just a Moment</h2>
+        <div class="loading-subtitle">
+          <svg class="sparkle-icon sparkle-spin-cw" viewBox="0 0 24 24" fill="none"><path d="M12 2l1.5 4.5L18 8l-4.5 1.5L12 14l-1.5-4.5L6 8l4.5-1.5z" fill="rgba(255,255,255,0.8)"/><path d="M19 15l1 3 3 1-3 1-1 3-1-3-3-1 3-1z" fill="rgba(255,255,255,0.6)"/><path d="M5 15l.7 2.1 2.1.7-2.1.7-.7 2.1-.7-2.1-2.1-.7 2.1-.7z" fill="rgba(255,255,255,0.5)"/></svg>
+          <p>Preparing something special for you</p>
+          <svg class="sparkle-icon sparkle-spin-ccw" viewBox="0 0 24 24" fill="none"><path d="M12 2l1.5 4.5L18 8l-4.5 1.5L12 14l-1.5-4.5L6 8l4.5-1.5z" fill="rgba(255,255,255,0.8)"/><path d="M19 15l1 3 3 1-3 1-1 3-1-3-3-1 3-1z" fill="rgba(255,255,255,0.6)"/><path d="M5 15l.7 2.1 2.1.7-2.1.7-.7 2.1-.7-2.1-2.1-.7 2.1-.7z" fill="rgba(255,255,255,0.5)"/></svg>
+        </div>
+      </div>
+
+      <!-- Progress bar -->
+      <div class="progress-wrap">
+        <div class="progress-track">
+          <div class="progress-bar" id="progress-bar">
+            <div class="progress-shimmer"></div>
+          </div>
+        </div>
+        <!-- Dots -->
+        <div class="loading-dots">
+          <span class="dot dot-1"></span>
+          <span class="dot dot-2"></span>
+          <span class="dot dot-3"></span>
+        </div>
+      </div>
+
+      <!-- Bottom decorative line -->
+      <div class="deco-line deco-line-bottom"></div>
+    </div>
+  </div>
+
+  <!-- ===================== SCREEN 2: ENVELOPE ===================== -->
+  <div id="screen-envelope" class="screen">
+    <!-- Floating sparkles background -->
+    <div id="envelope-sparkles" class="sparkles-container"></div>
+
+    <!-- Floating hearts around envelope -->
+    <div class="floating-hearts-ring" id="floating-hearts-ring"></div>
+
+    <!-- Main envelope card -->
+    <div class="envelope-wrapper" id="envelope-wrapper">
+      <!-- Outer frosted frame -->
+      <div class="envelope-outer-frame">
+        <!-- Inner white card -->
+        <div class="envelope-card" id="envelope-card">
+
+          <!-- Corner flourishes -->
+          <div class="corner-flourish corner-tl">
+            <svg viewBox="0 0 100 100"><path d="M 0 0 Q 0 50 50 50 Q 0 50 0 100" fill="currentColor"/></svg>
+          </div>
+          <div class="corner-flourish corner-tr">
+            <svg viewBox="0 0 100 100"><path d="M 0 0 Q 0 50 50 50 Q 0 50 0 100" fill="currentColor"/></svg>
+          </div>
+          <div class="corner-flourish corner-bl">
+            <svg viewBox="0 0 100 100"><path d="M 0 0 Q 0 50 50 50 Q 0 50 0 100" fill="currentColor"/></svg>
+          </div>
+          <div class="corner-flourish corner-br">
+            <svg viewBox="0 0 100 100"><path d="M 0 0 Q 0 50 50 50 Q 0 50 0 100" fill="currentColor"/></svg>
+          </div>
+
+          <!-- Inner borders -->
+          <div class="inner-border-outer">
+            <div class="inner-border-inner"></div>
+          </div>
+
+          <!-- Content -->
+          <div class="envelope-content">
+            <!-- Top deco: line + heart + line -->
+            <div class="top-deco" id="top-deco">
+              <div class="deco-hr"></div>
+              <svg class="deco-heart" viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z" fill="rgba(157,171,178,0.3)" stroke="#9DABB2" stroke-width="1.5"/></svg>
+              <div class="deco-hr"></div>
+            </div>
+
+            <!-- Heading -->
+            <h1 class="invite-title" id="invite-title">You're Invited</h1>
+
+            <!-- Sub-heading -->
+            <p class="invite-subtitle">❈ To Our Special Day ❈</p>
+
+            <!-- Envelope illustration -->
+            <div class="envelope-illus" id="envelope-illus">
+              <!-- Envelope body -->
+              <div class="env-body">
+                <!-- Envelope flap -->
+                <div class="env-flap" id="env-flap"></div>
+                <!-- Letter peeking out -->
+                <div class="env-letter" id="env-letter">
+                  <svg class="env-letter-heart" viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z" fill="rgba(157,171,178,0.2)" stroke="rgba(157,171,178,0.4)" stroke-width="1.5"/></svg>
+                </div>
+                <!-- Wax seal -->
+                <div class="env-seal" id="env-seal">
+                  <svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z" fill="white" stroke="rgba(255,255,255,0.5)" stroke-width="1"/></svg>
+                </div>
+              </div>
+            </div>
+
+            <!-- Instruction -->
+            <p class="invite-instruction">Click below to open your invitation</p>
+
+            <!-- Open button -->
+            <button class="open-btn" id="open-btn" onclick="handleOpenEnvelope()">
+              <svg class="btn-sparkle" viewBox="0 0 24 24" fill="none"><path d="M12 2l1.5 4.5L18 8l-4.5 1.5L12 14l-1.5-4.5L6 8l4.5-1.5z" fill="white"/><path d="M19 15l1 3 3 1-3 1-1 3-1-3-3-1 3-1z" fill="rgba(255,255,255,0.7)"/></svg>
+              Open Invitation
+              <svg class="btn-sparkle" viewBox="0 0 24 24" fill="none"><path d="M12 2l1.5 4.5L18 8l-4.5 1.5L12 14l-1.5-4.5L6 8l4.5-1.5z" fill="white"/><path d="M19 15l1 3 3 1-3 1-1 3-1-3-3-1 3-1z" fill="rgba(255,255,255,0.7)"/></svg>
+              <!-- Button shine -->
+              <div class="btn-shine"></div>
+            </button>
+
+            <!-- Bottom deco -->
+            <div class="bottom-deco">
+              <div class="deco-hr short"></div>
+              <svg class="deco-sparkle-sm" viewBox="0 0 24 24" fill="none"><path d="M12 2l1.5 4.5L18 8l-4.5 1.5L12 14l-1.5-4.5L6 8l4.5-1.5z" fill="rgba(157,171,178,0.5)"/></svg>
+              <div class="deco-hr short"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Below card text -->
+      <p class="treasure-text" id="treasure-text">✦ A moment you'll treasure forever ✦</p>
+    </div>
+
+  </div>
+
+  <script src="js/main.js"></script>
+</body>
+</html>

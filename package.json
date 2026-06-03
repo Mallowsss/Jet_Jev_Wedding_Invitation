@@ -1,0 +1,16 @@
+{
+  "name": "jet-and-jev-wedding",
+  "version": "1.0.0",
+  "description": "Wedding invitation & RSVP site for Jet & Jev",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "engines": {
+    "node": "18.x"
+  },
+  "dependencies": {
+    "express": "^4.18.2",
+    "@sendgrid/mail": "^7.7.0"
+  }
+}
