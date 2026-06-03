@@ -39,17 +39,16 @@
     </button>
   </nav>
 
-  <!-- Floating Music Button (below header, ~top-28) -->
   <button class="floating-music-btn" id="musicBtn" aria-label="Toggle music" onclick="toggleMusic()">
-    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-      <path d="M11 5L6 9H2v6h4l5 4V5z"/>
-      <path id="soundWaves" d="M19.07 4.93a10 10 0 0 1 0 14.14M15.54 8.46a5 5 0 0 1 0 7.07"/>
-    </svg>
-    
-    <audio id="bgMusic" loop>
-  <source src="public/song/bluer.mp3" type="audio/mpeg">
-  </audio>
-  </button>
+  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+    <path d="M11 5L6 9H2v6h4l5 4V5z"/>
+    <path id="soundWaves" d="M19.07 4.93a10 10 0 0 1 0 14.14M15.54 8.46a5 5 0 0 1 0 7.07"/>
+  </svg>
+</button>
+
+<audio id="bgMusic" loop preload="auto">
+  <source src="song/bluer.mp3" type="audio/mpeg">
+</audio>
 
   <!-- Mobile Nav Drawer -->
   <div class="mobile-nav" id="mobileNav">
