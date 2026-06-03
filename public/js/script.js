@@ -151,9 +151,11 @@ function _syncMusicUI() {
   if (isPlaying) {
     btn.setAttribute('aria-label', 'Pause music');
     if (soundWaves) soundWaves.style.display = 'block';
+    btn.classList.add('playing'); // Toggles a class in case your CSS uses it
   } else {
     btn.setAttribute('aria-label', 'Play music');
     if (soundWaves) soundWaves.style.display = 'none';
+    btn.classList.remove('playing');
   }
 }
  
@@ -161,31 +163,44 @@ function startMusicIfNeeded() {
   const bgMusic = document.getElementById('bgMusic');
   if (isPlaying || !bgMusic) return;
   bgMusic.play()
-    .then(() => { isPlaying = true;  _syncMusicUI(); })
-    .catch(() => { isPlaying = false; _syncMusicUI(); });
+    .then(() => { 
+      isPlaying = true;  
+      _syncMusicUI(); 
+    })
+    .catch(() => { 
+      isPlaying = false; 
+      _syncMusicUI(); 
+    });
 }
  
 window.toggleMusic = function() {
   const bgMusic = document.getElementById('bgMusic');
   if (!bgMusic) return;
+
   if (isPlaying) {
     bgMusic.pause();
     isPlaying = false;
+    _syncMusicUI();
   } else {
-    bgMusic.play().catch(() => {});
-    isPlaying = true;
+    // Fixed: Wrapping play inside a promise sequence so state stays 
+    // accurate even if the browser blocks execution initially.
+    bgMusic.play()
+      .then(() => {
+        isPlaying = true;
+        _syncMusicUI();
+      })
+      .catch((err) => {
+        console.warn("Playback prevented by browser policy:", err);
+        isPlaying = false;
+        _syncMusicUI();
+      });
   }
-  _syncMusicUI();
 };
  
-setTimeout(() => {
-  const bgMusic = document.getElementById('bgMusic');
-  if (!bgMusic) return;
-  bgMusic.play()
-    .then(() => { isPlaying = true;  _syncMusicUI(); })
-    .catch(() => { isPlaying = false; _syncMusicUI(); });
-}, 800);
+// Initial automatic attempt after a brief loading buffer
+setTimeout(startMusicIfNeeded, 800);
  
+// Safe triggers to catch modern browser autoplay bypass rules
 window.addEventListener('scroll', function _onScrollPlay() {
   startMusicIfNeeded();
   window.removeEventListener('scroll', _onScrollPlay);
