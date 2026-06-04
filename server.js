@@ -122,7 +122,7 @@ function guestConfirmEmailHTML({ guestName, attendance, table, category, seatIma
     ${seatBlock}
     <div style="border-top:1px solid #f0f0f0;padding-top:20px;font-size:14px;color:#878787;line-height:1.9;">
       <p style="margin:0;">📅 <strong>Date:</strong> Monday, June 29, 2026</p>
-      <p style="margin:0;">📍 <strong>Venue:</strong> Maple Grove Manor, Manila</p>
+      <p style="margin:0;">📍 <strong>Venue:</strong> City Garden Suites, Manila</p>
       <p style="margin:0;">⏰ <strong>Ceremony:</strong> 2:30 PM</p>
     </div>
   </div>
@@ -138,7 +138,7 @@ function notOnListEmailHTML({ guestName }) {
 <div style="font-family:'Inter',Arial,sans-serif;max-width:540px;margin:0 auto;border:1px solid #e5e5e5;border-radius:12px;overflow:hidden;">
   <div style="background:#667686;padding:32px;text-align:center;">
     <h1 style="color:#fff;font-family:Georgia,serif;margin:0;font-size:28px;">Jet &amp; Jev</h1>
-    <p style="color:rgba(255,255,255,0.85);margin:8px 0 0;font-size:14px;">June 29, 2026 • Maple Grove Manor, Manila</p>
+    <p style="color:rgba(255,255,255,0.85);margin:8px 0 0;font-size:14px;">June 29, 2026 • City Garden Suites, Manila</p>
   </div>
   <div style="padding:32px;">
     <h2 style="font-family:Georgia,serif;color:#667686;font-size:20px;margin:0 0 16px;">Thank you, ${firstName}!</h2>
