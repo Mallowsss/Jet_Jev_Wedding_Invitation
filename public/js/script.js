@@ -2,6 +2,7 @@
    JET & JEV WEDDING — script.js
    Original RSVP + SendGrid logic fully preserved.
    Fixed: Google Maps syntax, scroll performance, and element safeguards.
+   Added: Device Binding for invitation links.
    ============================================= */
 
 // ═══════════════════════════════════════════════════════════════
@@ -39,13 +40,22 @@ function _isHostAccess() {
     return;
   }
 
+  // 1. Get an existing device ID from localStorage (if this device already claimed it)
+  const deviceId = localStorage.getItem(`wedding_device_${token}`) || '';
+
   try {
-    const res  = await fetch(`/api/validate-token?invite=${encodeURIComponent(token)}`);
+    // 2. Send both the invitation token AND the device ID to the server
+    const res  = await fetch(`/api/validate-token?invite=${encodeURIComponent(token)}&deviceId=${encodeURIComponent(deviceId)}`);
     const data = await res.json();
 
     if (!res.ok || !data.valid) {
       _showLockedPage(data.reason || 'invalid_token');
       return;
+    }
+
+    // 3. If successful, the server will return a deviceId. Save it to lock this browser in.
+    if (data.deviceId) {
+      localStorage.setItem(`wedding_device_${token}`, data.deviceId);
     }
 
     // Valid token — store it for RSVP submission
@@ -92,9 +102,10 @@ function _showLockedPage(reason) {
 
 function _lockScreenHTML(reason) {
   const messages = {
-    no_token:      { title: 'Invitation Required', body: 'This wedding site is only accessible through a personal invitation link. If you received one, please use the link from your invitation.' },
-    invalid_token: { title: 'Invalid Invitation',  body: 'This invitation link is not valid. Please check the link you received, or contact the couple if you believe this is an error.' },
-    network_error: { title: 'Connection Error',    body: 'We couldn\'t verify your invitation. Please check your internet connection and refresh the page.' },
+    no_token:       { title: 'Invitation Required', body: 'This wedding site is only accessible through a personal invitation link. If you received one, please use the link from your invitation.' },
+    invalid_token:  { title: 'Invalid Invitation',  body: 'This invitation link is not valid. Please check the link you received, or contact the couple if you believe this is an error.' },
+    already_claimed:{ title: 'Link Already Used',   body: 'This personalized invitation link has already been opened on another device. For security, links cannot be shared.' },
+    network_error:  { title: 'Connection Error',    body: 'We couldn\'t verify your invitation. Please check your internet connection and refresh the page.' },
   };
   const { title, body } = messages[reason] || messages['invalid_token'];
 
@@ -195,11 +206,6 @@ window.toggleMusic = function() {
 };
 
 // ── Interaction listeners that trigger autoplay ──────────────────
-// Browsers (and especially mobile) require a genuine user gesture
-// before audio can play. Deployed servers (Render, Vercel, etc.)
-// enforce this strictly. We listen on scroll, click, and touchstart
-// so the first real interaction — on any device — starts the music.
-
 function _removeInteractionListeners() {
   window.removeEventListener('scroll',      _onScrollPlay);
   document.removeEventListener('click',     _onClickPlay);
