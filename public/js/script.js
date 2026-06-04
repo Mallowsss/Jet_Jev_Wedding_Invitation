@@ -2,7 +2,7 @@
    JET & JEV WEDDING — script.js
    Original RSVP + SendGrid logic fully preserved.
    Fixed: Google Maps syntax, scroll performance, and element safeguards.
-   Added: Device Binding for invitation links.
+   Added: Device Binding & Updatable RSVPs
    ============================================= */
 
 // ═══════════════════════════════════════════════════════════════
@@ -12,11 +12,6 @@
 /** The token from ?invite=<token> in the URL. */
 let _inviteToken = null;
 
-/**
- * Returns true when the site is being accessed locally (dev/host preview)
- * OR when ?host=true is in the URL (for editing on the live server).
- * In both cases token validation is skipped so the host can browse freely.
- */
 function _isHostAccess() {
   const hostname = window.location.hostname;
   const isLocal  = hostname === 'localhost' || hostname === '127.0.0.1' || hostname === '';
@@ -25,12 +20,10 @@ function _isHostAccess() {
 }
 
 (async function validateInviteToken() {
-  // ── HOST / DEV BYPASS ────────────────────────────────────────────────────
   if (_isHostAccess()) {
     console.log('🔓 Host/dev access — token check skipped.');
     return;
   }
-  // ────────────────────────────────────────────────────────────────────────
 
   const params = new URLSearchParams(window.location.search);
   const token  = params.get('invite');
@@ -40,11 +33,9 @@ function _isHostAccess() {
     return;
   }
 
-  // 1. Get an existing device ID from localStorage (if this device already claimed it)
   const deviceId = localStorage.getItem(`wedding_device_${token}`) || '';
 
   try {
-    // 2. Send both the invitation token AND the device ID to the server
     const res  = await fetch(`/api/validate-token?invite=${encodeURIComponent(token)}&deviceId=${encodeURIComponent(deviceId)}`);
     const data = await res.json();
 
@@ -53,19 +44,22 @@ function _isHostAccess() {
       return;
     }
 
-    // 3. If successful, the server will return a deviceId. Save it to lock this browser in.
     if (data.deviceId) {
       localStorage.setItem(`wedding_device_${token}`, data.deviceId);
     }
 
-    // Valid token — store it for RSVP submission
     _inviteToken = token;
 
-    // Personalise the greeting if a welcome element exists
     const greetEl = document.getElementById('inviteGuestName');
     if (greetEl && data.name) {
       greetEl.textContent = data.name.split(' ')[0];
       greetEl.closest('[id^="inviteGreeting"]')?.classList.remove('hidden');
+    }
+
+    // Change button text if they've already RSVP'd
+    if (data.rsvpDone) {
+      const btn = document.getElementById('submitBtn');
+      if (btn) btn.textContent = 'Update RSVP 🔄';
     }
 
   } catch (err) {
@@ -77,7 +71,6 @@ function _isHostAccess() {
 function _showLockedPage(reason) {
   function _applyLock() {
     document.querySelectorAll('body > *:not(#inviteLockScreen)').forEach(el => {
-      // Never hide the audio element — music must survive the lock screen
       if (el.id === 'bgMusic' || el.tagName === 'AUDIO') return;
       el.style.display = 'none';
     });
@@ -175,7 +168,6 @@ function startMusicIfNeeded() {
   if (_musicUnlocked) return;
   const bgMusic = document.getElementById('bgMusic');
   if (!bgMusic) {
-    // Element not in DOM yet (e.g. during token fetch) — retry shortly
     setTimeout(startMusicIfNeeded, 300);
     return;
   }
@@ -186,9 +178,7 @@ function startMusicIfNeeded() {
       _syncMusicUI();
       _removeInteractionListeners();
     })
-    .catch(() => {
-      // Autoplay blocked — will retry on next interaction
-    });
+    .catch(() => {});
 }
 
 window.toggleMusic = function() {
@@ -205,7 +195,6 @@ window.toggleMusic = function() {
   _syncMusicUI();
 };
 
-// ── Interaction listeners that trigger autoplay ──────────────────
 function _removeInteractionListeners() {
   window.removeEventListener('scroll',      _onScrollPlay);
   document.removeEventListener('click',     _onClickPlay);
@@ -253,11 +242,11 @@ function generateCalendar() {
   const calendar    = document.getElementById('calendar');
   if (!calendar) return;
   const daysOfWeek  = ['Sun','Mon','Tue','Wed','Thu','Fri','Sat'];
-  const firstDay    = 1; // June 1 2026 = Monday
+  const firstDay    = 1; 
   const daysInMonth = 30;
   const weddingDay  = 29;
 
-  calendar.innerHTML = ''; // Clear prior entries if any
+  calendar.innerHTML = ''; 
 
   daysOfWeek.forEach(day => {
     const h = document.createElement('div');
@@ -326,7 +315,7 @@ window.resetRsvp = function() {
   const submitEl = document.getElementById('submitBtn');
   if (nameEl)   nameEl.value    = '';
   if (emailEl)  emailEl.value   = '';
-  if (submitEl) { submitEl.disabled = false; submitEl.textContent = 'Submit RSVP ✓'; }
+  if (submitEl) { submitEl.disabled = false; }
   show('rsvpInitial');
 };
 
@@ -380,22 +369,29 @@ window.submitRsvp = async function(event) {
         }
         hide('rsvpForm');
         show('rsvpSuccess');
-        showToast(`Thank you, ${name.split(' ')[0]}! Check your email for confirmation. 💙`);
+        
+        const actionWord = data.isUpdate ? 'updated' : 'confirmed';
+        showToast(`Thank you, ${name.split(' ')[0]}! Your RSVP is ${actionWord}. 💙`);
       } else {
         hide('rsvpForm');
         show('rsvpNotListed');
       }
+      
+      // Keep the button text as Update for future uses
+      if (btn) btn.textContent = 'Update RSVP 🔄';
       setTimeout(window.resetRsvp, 8000);
     } else {
-      // FIX: Show the actual error message from the server!
       showToast(data.error || 'Something went wrong. Please try again.');
-      if (btn) { btn.disabled = false; btn.textContent = 'Submit RSVP ✓'; }
+      if (btn) { 
+        btn.disabled = false; 
+        btn.textContent = data.isUpdate ? 'Update RSVP 🔄' : 'Submit RSVP ✓'; 
+      }
     }
 
   } catch (err) {
     console.error('=== FRONTEND: ERROR ===', err.message);
     showToast('Network error. Please check your connection and try again.');
-    if (btn) { btn.disabled = false; btn.textContent = 'Submit RSVP ✓'; }
+    if (btn) { btn.disabled = false; btn.textContent = 'Try Again 🔄'; }
   }
 };
 
@@ -466,21 +462,18 @@ window.showTab = function(tabId) {
 
   currentTab = tabId;
 
-  // Hide all panels
   document.querySelectorAll('.tab-panel').forEach(p => {
     p.classList.remove('active', 'fade-in');
     p.style.display = 'none';
   });
 
-  // Show target
   const target = document.getElementById('tab-' + tabId);
   if (target) {
     target.style.display = 'block';
-    void target.offsetWidth; // force reflow
+    void target.offsetWidth; 
     target.classList.add('active', 'fade-in');
   }
 
-  // Update active link states + flash underline
   navLinkEls.forEach(l => {
     l.classList.toggle('active', l.dataset.tab === tabId);
     l.classList.remove('active-flash');
@@ -502,7 +495,6 @@ window.showTab = function(tabId) {
 
   updateNavState();
 
-  // Reset target view states and re-observe elements
   setTimeout(() => {
     const panel = document.getElementById('tab-' + tabId);
     if (panel) {
@@ -514,7 +506,6 @@ window.showTab = function(tabId) {
   }, 50);
 };
 
-// Attach nav link click handlers
 navLinkEls.forEach(link => {
   link.addEventListener('click', e => {
     e.preventDefault();
@@ -629,8 +620,6 @@ function observeReveals() {
   }
 
   updateNavState();
-  
-  // Set up the intersection observer once on initialization
   initRevealObserver();
 
   console.log('✅ Script loaded successfully');
