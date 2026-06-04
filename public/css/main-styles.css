@@ -718,7 +718,7 @@ section {
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 1.5rem;
-  align-items: stretch;
+  align-items: center; /* Reverted to center to prevent the card from stretching */
   width: 100%;
 }
 .attire-grid > * { min-width: 0; }
@@ -766,7 +766,7 @@ section {
 
 .attire-image {
     width: 100%;
-    height: 100%;
+    height: clamp(320px, 35vw, 420px); /* Gives the image a pleasing independent height */
     border-radius: 16px;
     overflow: hidden;
     box-shadow: 0 6px 24px rgba(0,0,0,0.15);
@@ -811,7 +811,7 @@ section {
 
 .gifts-grid {
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: 1fr; /* Changed to 1 column to stack the boxes */
   gap: 1.5rem;
   align-items: center;
   width: 100%;
@@ -820,9 +820,10 @@ section {
 
 .gift-card {
     background: white;
-    padding: 1.5rem;
+    padding: 2rem; /* slightly increased padding for better breathing room */
     border-radius: 16px;
     box-shadow: 0 3px 14px rgba(0,0,0,0.08);
+    width: 100%;
 }
 
 .gift-card-icon { font-size: 2rem; margin-bottom: 1rem; }
@@ -849,9 +850,10 @@ section {
 
 .qr-container {
   display: flex;
-  gap: 1.5rem;
+  gap: 2rem;
   justify-content: center;
-  flex-wrap: wrap; /* responsive */
+  flex-wrap: wrap; /* keeps side by side on desktop, stacks gracefully on phones */
+  margin-top: 1.5rem;
 }
 
 .qr-code-wrapper {
