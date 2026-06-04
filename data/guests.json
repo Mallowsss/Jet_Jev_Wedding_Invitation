@@ -150,7 +150,7 @@
     "table": 13
   },
   {
-    "name": "Inang",
+    "name": "Lolita",
     "category": "BRIDE'S FAMILY",
     "table": 20
   },
@@ -240,13 +240,13 @@
     "table": 2
   },
   {
-    "name": "CO",
-    "category": "JW",
+    "name": "Melchor",
+    "category": "OM",
     "table": 26
   },
   {
-    "name": "CO's Wife",
-    "category": "JW",
+    "name": "Sarah",
+    "category": "OM",
     "table": 26
   },
   {
@@ -260,7 +260,7 @@
     "table": 26
   },
   {
-    "name": "Neomi",
+    "name": "Noemi",
     "category": "JW",
     "table": 26
   },
@@ -290,12 +290,12 @@
     "table": 26
   },
   {
-    "name": "Abi",
+    "name": "Abigael",
     "category": "JW",
     "table": 26
   },
   {
-    "name": "Muana",
+    "name": "Benjie",
     "category": "JW",
     "table": 26
   },
@@ -335,7 +335,7 @@
     "table": 26
   },
   {
-    "name": "Beth",
+    "name": "Erica",
     "category": "JW",
     "table": 26
   },
@@ -380,7 +380,7 @@
     "table": 26
   },
   {
-    "name": "Coleen",
+    "name": "Cheyanne",
     "category": "JW",
     "table": 26
   },
@@ -415,58 +415,58 @@
     "table": 20
   },
   {
-    "name": "DEL ROSARIO-UK",
+    "name": "Nova",
     "category": "GROOM'S FAMILY",
     "table": 13
   },
   {
-    "name": "DEL ROSARIO-UK",
+    "name": "Adam",
     "category": "GROOM'S FAMILY",
     "table": 13
   },
   {
-    "name": "DEL ROSARIO-UK",
-    "category": "GROOM'S FAMILY",
+    "name": "Marilou",
+    "category": "GROOM'S FRIEND",
     "table": 13
   },
   {
-    "name": "DEL ROSARIO-UK",
-    "category": "GROOM'S FAMILY",
+    "name": "Immanuel",
+    "category": "GROOM'S FRIEND",
     "table": 13
   },
   {
-    "name": "DEL ROSARIO-UK",
-    "category": "GROOM'S FAMILY",
+    "name": "Danji",
+    "category": "GROOM'S FRIEND",
     "table": 13
   },
   {
-    "name": "Mama's Boss",
-    "category": "Mama' Boss",
+    "name": "Renato",
+    "category": "JW",
     "table": 6
   },
   {
-    "name": "Mama's Boss",
-    "category": "Mama' Boss",
+    "name": "Carlo",
+    "category": "JW",
     "table": 6
   },
   {
-    "name": "Mama's Boss",
-    "category": "Mama' Boss",
+    "name": "JR",
+    "category": "JW",
     "table": 6
   },
   {
-    "name": "Mama's Boss",
-    "category": "Mama' Boss",
+    "name": "Monica",
+    "category": "JW",
     "table": 6
   },
   {
-    "name": "Mama's Boss",
-    "category": "Mama' Boss",
+    "name": "Diony",
+    "category": "JW",
     "table": 6
   },
   {
-    "name": "Mama's Boss",
-    "category": "Mama' Boss",
+    "name": "Kim",
+    "category": "BRIDE'S FRIEND",
     "table": 6
   },
   {
@@ -510,8 +510,8 @@
     "table": null
   },
   {
-    "name": "Vilma",
-    "category": "",
+    "name": "Patty",
+    "category": "JW",
     "table": null
   }
 ]
