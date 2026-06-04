@@ -127,7 +127,7 @@ function guestConfirmEmailHTML({ guestName, attendance, table, category, seatIma
     </div>
   </div>
   <div style="background:#667686;padding:20px 32px;text-align:center;">
-    <p style="color:rgba(255,255,255,0.9);font-family:Georgia,serif;font-style:italic;margin:0;font-size:15px;">"Made with love — Jev &amp; Jet"</p>
+    <p style="color:rgba(255,255,255,0.9);font-family:Georgia,serif;font-style:italic;margin:0;font-size:15px;">"Made with love — Jet &amp; Jev"</p>
   </div>
 </div>`;
 }
@@ -150,7 +150,7 @@ function notOnListEmailHTML({ guestName }) {
     </div>
   </div>
   <div style="background:#667686;padding:20px 32px;text-align:center;">
-    <p style="color:rgba(255,255,255,0.9);font-family:Georgia,serif;font-style:italic;margin:0;font-size:15px;">"Made with love — Jev &amp; Jet"</p>
+    <p style="color:rgba(255,255,255,0.9);font-family:Georgia,serif;font-style:italic;margin:0;font-size:15px;">"Made with love — Jet &amp; Jev"</p>
   </div>
 </div>`;
 }
