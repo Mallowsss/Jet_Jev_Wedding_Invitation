@@ -387,7 +387,8 @@ window.submitRsvp = async function(event) {
       }
       setTimeout(window.resetRsvp, 8000);
     } else {
-      showToast('Something went wrong. Please try again.');
+      // FIX: Show the actual error message from the server!
+      showToast(data.error || 'Something went wrong. Please try again.');
       if (btn) { btn.disabled = false; btn.textContent = 'Submit RSVP ✓'; }
     }
 
