@@ -113,7 +113,7 @@ function guestConfirmEmailHTML({ guestName, attendance, table, category, seatIma
 <div style="font-family:'Inter',Arial,sans-serif;max-width:540px;margin:0 auto;border:1px solid #e5e5e5;border-radius:12px;overflow:hidden;">
   <div style="background:#667686;padding:32px;text-align:center;">
     <p style="color:rgba(255,255,255,0.65);margin:0 0 8px;font-size:12px;letter-spacing:2px;text-transform:uppercase;">You're Invited</p>
-    <h1 style="color:#fff;font-family:Georgia,serif;margin:0;font-size:32px;">Jet &amp; Jev</h1>
+    <h1 style="color:#fff;font-family:Georgia,serif;margin:0;font-size:32px;">Jet &amp; Jev Wedding</h1>
     <p style="color:rgba(255,255,255,0.85);margin:8px 0 0;font-size:14px;">June 29, 2026 • City Garden Suites, Manila</p>
   </div>
   <div style="padding:32px;">
