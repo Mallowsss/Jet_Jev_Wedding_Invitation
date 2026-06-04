@@ -1,9 +1,11 @@
 // server.js — Express server for Render deployment
 // FAST RESPONSE: Emails sent in background, doesn't slow down the UI
+// Added: Device Binding logic to prevent link sharing
 
 const express = require("express");
 const path    = require("path");
 const fs      = require("fs");
+const crypto  = require("crypto"); // Added for generating unique device IDs
 const guests  = require("./data/guests.json");
 
 const app  = express();
@@ -220,12 +222,12 @@ app.get("/api/test", (req, res) => {
 // ══════════════════════════════════════════════════════════════════════════════
 
 /**
- * GET /api/validate-token?invite=<token>
+ * GET /api/validate-token?invite=<token>&deviceId=<string>
  * Called by the frontend on page load.
- * Returns guest name if valid, marks token as "claimed" (first open).
+ * Validates the token and binds it to the user's specific browser/device.
  */
 app.get("/api/validate-token", (req, res) => {
-  const { invite } = req.query;
+  const { invite, deviceId } = req.query;
 
   if (!invite) {
     return res.status(400).json({ valid: false, reason: "no_token" });
@@ -238,23 +240,49 @@ app.get("/api/validate-token", (req, res) => {
     return res.status(404).json({ valid: false, reason: "invalid_token" });
   }
 
-  // Mark as claimed on first open
+  // ── CASE A: First time claiming the token ──
   if (!entry.claimed) {
+    // Generate a new, unique ID for this device using Node's crypto library
+    const newDeviceId = crypto.randomBytes(16).toString('hex');
+    
     entry.claimed   = true;
     entry.claimedAt = new Date().toISOString();
+    entry.deviceId  = newDeviceId; // Bind this device ID to this token
+    
     tokens[invite]  = entry;
     saveTokens(tokens);
-    console.log(`🎟️  Token claimed: ${entry.name} (${invite.slice(0, 8)}...)`);
+    
+    console.log(`🎟️  Token claimed & bound to device: ${entry.name} (${invite.slice(0, 8)}...)`);
+    
+    return res.json({
+      valid:     true,
+      deviceId:  newDeviceId, // Sent back so frontend can save it in localStorage
+      name:      entry.name,
+      category:  entry.category,
+      table:     entry.table,
+      claimed:   entry.claimed,
+      rsvpDone:  entry.rsvpDone,
+    });
   }
 
-  return res.json({
-    valid:     true,
-    name:      entry.name,
-    category:  entry.category,
-    table:     entry.table,
-    claimed:   entry.claimed,
-    rsvpDone:  entry.rsvpDone,
-  });
+  // ── CASE B: Token already claimed, verify the device ──
+  if (entry.claimed) {
+    // If the incoming deviceId from localStorage doesn't match our saved one
+    if (!deviceId || deviceId !== entry.deviceId) {
+      console.log(`🔒 Blocked access: ${entry.name}'s token opened on a different device.`);
+      return res.status(403).json({ valid: false, reason: "already_claimed" });
+    }
+    
+    // If it DOES match, let them in!
+    return res.json({
+      valid:     true,
+      name:      entry.name,
+      category:  entry.category,
+      table:     entry.table,
+      claimed:   entry.claimed,
+      rsvpDone:  entry.rsvpDone,
+    });
+  }
 });
 
 /**
