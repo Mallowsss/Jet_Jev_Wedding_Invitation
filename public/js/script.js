@@ -371,7 +371,7 @@ window.submitRsvp = async function(event) {
         show('rsvpSuccess');
         
         const actionWord = data.isUpdate ? 'updated' : 'confirmed';
-        showToast(`Thank you, ${name.split(' ')[0]}! Your RSVP is ${actionWord}. 💙`);
+        showToast(`Thank you, ${name.split(' ')[0]}! Your RSVP is ${actionWord}. Please check your email/spam folder 💙`);
       } else {
         hide('rsvpForm');
         show('rsvpNotListed');
