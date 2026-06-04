@@ -380,7 +380,7 @@ window.submitRsvp = async function(event) {
         }
         hide('rsvpForm');
         show('rsvpSuccess');
-        showToast(`Welcome, ${name.split(' ')[0]}! Check your email for confirmation. 💙`);
+        showToast(`Thank you, ${name.split(' ')[0]}! Check your email for confirmation. 💙`);
       } else {
         hide('rsvpForm');
         show('rsvpNotListed');
