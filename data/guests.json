@@ -513,5 +513,55 @@
     "name": "Patty",
     "category": "JW",
     "table": null
+  },
+  {
+    "name": "Qwyncy",
+    "category": "JW",
+    "table": 26
+  },
+  {
+    "name": "Micha",
+    "category": "JW",
+    "table": 26
+  },
+  {
+    "name": "Ken",
+    "category": "JW",
+    "table": 26
+  },
+  {
+    "name": "Cris",
+    "category": "JW",
+    "table": 26
+  },
+  {
+    "name": "Mhay",
+    "category": "JW",
+    "table": 26
+  },
+  {
+    "name": "Michael",
+    "category": "JW",
+    "table": 26
+  },
+  {
+    "name": "Manilyn",
+    "category": "JW",
+    "table": 26
+  },
+  {
+    "name": "Althea",
+    "category": "JW",
+    "table": 26
+  },
+  {
+    "name": "Athina",
+    "category": "JW",
+    "table": 26
+  },
+  {
+    "name": "Benhur",
+    "category": "JW",
+    "table": 26
   }
 ]
