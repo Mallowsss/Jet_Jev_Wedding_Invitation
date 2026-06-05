@@ -2136,6 +2136,8 @@ footer .footer-details { font-size: 0.875rem; opacity: 0.8; }
   .attire-grid .attire-palette-card {
     order: 2;
     min-height: 320px;
+    width: 100%;
+    box-sizing: border-box;
   }
   .attire-grid .attire-card {
     order: 1;
