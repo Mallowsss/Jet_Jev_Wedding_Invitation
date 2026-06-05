@@ -2505,3 +2505,18 @@ footer .footer-details { font-size: 0.875rem; opacity: 0.8; }
 .name-error.success {
   color: #4a7c59;
 }
+
+/* ── RSVP deadline notice ── */
+.rsvp-deadline {
+  text-align: center;
+  color: rgba(255, 255, 255, 0.85);
+  font-size: 0.9rem;
+  line-height: 1.6;
+  max-width: 480px;
+  margin: -0.5rem auto 1.5rem;
+}
+
+.rsvp-deadline strong {
+  color: #ffffff;
+  font-weight: 700;
+}
