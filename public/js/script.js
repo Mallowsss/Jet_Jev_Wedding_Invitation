@@ -3,6 +3,7 @@
    Original RSVP + SendGrid logic fully preserved.
    Fixed: Google Maps syntax, scroll performance, and element safeguards.
    Added: Device Binding & Updatable RSVPs
+   Added: Token-bound name validation with typo detection
    ============================================= */
 
 // ═══════════════════════════════════════════════════════════════
@@ -56,7 +57,7 @@ function _isHostAccess() {
       greetEl.closest('[id^="inviteGreeting"]')?.classList.remove('hidden');
     }
 
-    // Set placeholder to token name
+    // Set placeholder to token name so guest knows exactly what to type
     const nameInput = document.getElementById('fullName');
     if (nameInput && data.name) {
       nameInput.placeholder = data.name;
@@ -249,11 +250,11 @@ function generateCalendar() {
   const calendar    = document.getElementById('calendar');
   if (!calendar) return;
   const daysOfWeek  = ['Sun','Mon','Tue','Wed','Thu','Fri','Sat'];
-  const firstDay    = 1; 
+  const firstDay    = 1;
   const daysInMonth = 30;
   const weddingDay  = 29;
 
-  calendar.innerHTML = ''; 
+  calendar.innerHTML = '';
 
   daysOfWeek.forEach(day => {
     const h = document.createElement('div');
@@ -319,10 +320,14 @@ window.resetRsvp = function() {
   ['rsvpAttendanceType','rsvpForm','rsvpDecline','rsvpSuccess','rsvpNotListed'].forEach(hide);
   const nameEl   = document.getElementById('fullName');
   const emailEl  = document.getElementById('email');
+  const errorEl  = document.getElementById('nameError');
+  const emailGrp = document.getElementById('emailGroup');
   const submitEl = document.getElementById('submitBtn');
   if (nameEl)   nameEl.value    = '';
   if (emailEl)  emailEl.value   = '';
-  if (submitEl) { submitEl.disabled = false; }
+  if (errorEl)  { errorEl.textContent = ''; errorEl.className = 'name-error hidden'; }
+  if (emailGrp) emailGrp.classList.add('hidden');
+  if (submitEl) { submitEl.disabled = false; submitEl.classList.add('hidden'); }
   show('rsvpInitial');
 };
 
@@ -333,17 +338,16 @@ function _normalizeForCompare(str) {
   return str.toLowerCase().replace(/\s+/g, ' ').trim();
 }
 
-function _similarEnough(a, b) {
-  // Check if one contains the other (handles partial matches)
-  const na = _normalizeForCompare(a);
-  const nb = _normalizeForCompare(b);
-  if (na === nb) return 'exact';
-  if (na.includes(nb) || nb.includes(na)) return 'close';
-  // Simple typo check: allow 1 character difference via Levenshtein
-  if (Math.abs(na.length - nb.length) <= 2) {
+function _similarEnough(typed, tokenName) {
+  const a = _normalizeForCompare(typed);
+  const b = _normalizeForCompare(tokenName);
+  if (a === b) return 'exact';
+  if (a.includes(b) || b.includes(a)) return 'close';
+  // Simple Levenshtein-style check: allow up to 2 character differences
+  if (Math.abs(a.length - b.length) <= 2) {
     let diff = 0;
-    const longer = na.length > nb.length ? na : nb;
-    const shorter = na.length > nb.length ? nb : na;
+    const longer  = a.length > b.length ? a : b;
+    const shorter = a.length > b.length ? b : a;
     for (let i = 0, j = 0; i < longer.length; i++, j++) {
       if (longer[i] !== shorter[j]) {
         diff++;
@@ -410,10 +414,11 @@ window.submitRsvp = async function(event) {
   const attendance = selectedAttendance;
 
   // Always use the token-bound name for submission
-  const tokenName  = nameEl ? (nameEl.getAttribute('data-token-name') || name) : name;
+  const tokenName = nameEl ? (nameEl.getAttribute('data-token-name') || name) : name;
 
   console.log('=== FRONTEND: Form submitted ===');
-  console.log('Name:', name);
+  console.log('Typed name:', name);
+  console.log('Token name:', tokenName);
   console.log('Email:', email);
   console.log('Attendance:', attendance);
 
@@ -421,6 +426,14 @@ window.submitRsvp = async function(event) {
 
   if (!_inviteToken) {
     showToast('Your invitation link is required to RSVP. Please use your personal link.');
+    return;
+  }
+
+  // Block submission if name doesn't exactly match token
+  const match = _similarEnough(name, tokenName);
+  if (tokenName && match !== 'exact') {
+    hide('rsvpForm');
+    show('rsvpNotListed');
     return;
   }
 
@@ -433,7 +446,7 @@ window.submitRsvp = async function(event) {
     const res = await fetch('/api/rsvp', {
       method:  'POST',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ name: tokenName, email, attendance, inviteToken: _inviteToken }),
+      body:    JSON.stringify({ name: tokenName, email, attendance, inviteToken: _inviteToken }),
     });
 
     const data = await res.json();
@@ -447,22 +460,21 @@ window.submitRsvp = async function(event) {
         }
         hide('rsvpForm');
         show('rsvpSuccess');
-        
+
         const actionWord = data.isUpdate ? 'updated' : 'confirmed';
-        showToast(`Thank you, ${name.split(' ')[0]}! Your RSVP is ${actionWord}. Please check your email/spam folder 💙`);
+        showToast(`Thank you, ${tokenName.split(' ')[0]}! Your RSVP is ${actionWord}. Please check your email/spam folder 💙`);
       } else {
         hide('rsvpForm');
         show('rsvpNotListed');
       }
-      
-      // Keep the button text as Update for future uses
+
       if (btn) btn.textContent = 'Update RSVP 🔄';
       setTimeout(window.resetRsvp, 8000);
     } else {
       showToast(data.error || 'Something went wrong. Please try again.');
-      if (btn) { 
-        btn.disabled = false; 
-        btn.textContent = data.isUpdate ? 'Update RSVP 🔄' : 'Submit RSVP ✓'; 
+      if (btn) {
+        btn.disabled = false;
+        btn.textContent = data.isUpdate ? 'Update RSVP 🔄' : 'Submit RSVP ✓';
       }
     }
 
@@ -515,7 +527,7 @@ window.addEventListener('unhandledrejection', function(e) {
 const siteNav     = document.getElementById('siteNav');
 const hamburger   = document.getElementById('hamburger');
 const mobileNav   = document.getElementById('mobileNav');
-const navLinkEls = document.querySelectorAll('.nav-links .nav-link');
+const navLinkEls  = document.querySelectorAll('.nav-links .nav-link');
 const mobileLinkEls = document.querySelectorAll('.mobile-link');
 
 let currentTab = 'home';
@@ -548,7 +560,7 @@ window.showTab = function(tabId) {
   const target = document.getElementById('tab-' + tabId);
   if (target) {
     target.style.display = 'block';
-    void target.offsetWidth; 
+    void target.offsetWidth;
     target.classList.add('active', 'fade-in');
   }
 
@@ -557,7 +569,7 @@ window.showTab = function(tabId) {
     l.classList.remove('active-flash');
   });
   mobileLinkEls.forEach(l => l.classList.toggle('active', l.dataset.tab === tabId));
-  
+
   const clickedLink = document.querySelector('.nav-links .nav-link[data-tab="' + tabId + '"]');
   if (clickedLink) {
     clickedLink.classList.add('active-flash');
@@ -567,7 +579,7 @@ window.showTab = function(tabId) {
   window.scrollTo({ top: 0, behavior: 'smooth' });
 
   if (mobileNav) mobileNav.classList.remove('open');
-  
+
   const floatingMusicBtn = document.getElementById('musicBtn');
   if (floatingMusicBtn) floatingMusicBtn.classList.remove('hidden-by-menu');
 
@@ -710,12 +722,12 @@ document.addEventListener('DOMContentLoaded', function () {
   var section = document.getElementById('rsvp');
   var bg      = document.getElementById('rsvpBg');
   if (!section || !bg) return;
- 
+
   function tick() {
     var offset = section.getBoundingClientRect().top * -0.4;
     bg.style.transform = 'translateY(' + offset + 'px)';
   }
- 
+
   window.addEventListener('scroll', tick, { passive: true });
   window.addEventListener('resize', tick, { passive: true });
   tick();
