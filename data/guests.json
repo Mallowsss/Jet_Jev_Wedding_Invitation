@@ -12,77 +12,77 @@
   {
     "name": "Vince",
     "category": "DIRECTOR",
-    "table": VIP 2
+    "table": "VIP 2"
   },
   {
     "name": "Anthony",
     "category": "COORDINATOR",
-    "table": VIP 2
+    "table": "VIP 2"
   },
   {
     "name": "Ron",
     "category": "CHAIRMAN",
-    "table": VIP 2
+    "table": "VIP 2"
   },
   {
     "name": "Philip",
     "category": "WITNESS/ES",
-    "table": VIP 2
+    "table": "VIP 2"
   },
   {
     "name": "Jessa",
     "category": "WITNESS/ES",
-    "table": VIP 2
+    "table": "VIP 2"
   },
   {
     "name": "JP",
     "category": "PARTNER OF WITNESS/ES",
-    "table": VIP 2
+    "table": "VIP 2"
   },
   {
     "name": "EJ",
     "category": "RING BEARER",
-    "table": VIP 2
+    "table": "VIP 2"
   },
   {
     "name": "Joey",
     "category": "PARENTS OF THE GROOM",
-    "table": VIP 2
+    "table": "VIP 2"
   },
   {
     "name": "Emily",
     "category": "PARENTS OF THE GROOM",
-    "table": VIP 2
+    "table": "VIP 2"
   },
   {
     "name": "Dominador",
     "category": "PARENTS OF THE BRIDE",
-    "table": VIP 1
+    "table": "VIP 1"
   },
   {
     "name": "Flor",
     "category": "PARENTS OF THE BRIDE",
-    "table": VIP 1
+    "table": "VIP 1"
   },
   {
     "name": "Giezel",
     "category": "MAID OF HONOR",
-    "table": VIP 1
+    "table": "VIP 1"
   },
   {
     "name": "Jenny",
     "category": "BRIDESMAID",
-    "table": VIP 1
+    "table": "VIP 1"
   },
   {
     "name": "Joana",
     "category": "BRIDESMAID",
-    "table": VIP 1
+    "table": "VIP 1"
   },
   {
     "name": "Jessa",
     "category": "BRIDESMAID",
-    "table": VIP 1
+    "table": "VIP 1"
   },
   {
     "name": "Janus",
@@ -152,12 +152,12 @@
   {
     "name": "Lolita",
     "category": "BRIDE'S FAMILY",
-    "table": VIP 1
+    "table": "VIP 1"
   },
   {
     "name": "Liza",
     "category": "BRIDE'S FAMILY",
-    "table": VIP 1
+    "table": "VIP 1"
   },
   {
     "name": "Ashley",
@@ -242,12 +242,12 @@
   {
     "name": "Melchor",
     "category": "OM",
-    "table": VIP 1
+    "table": "VIP 1"
   },
   {
     "name": "Sarah",
     "category": "OM",
-    "table": VIP 1
+    "table": "VIP 1"
   },
   {
     "name": "Inah",
