@@ -415,10 +415,10 @@
           <form class="rsvp-form" onsubmit="submitRsvp(event)">
             <div class="form-group">
               <label for="fullName">First Name</label>
-              <input type="text" id="fullName" placeholder="" autocomplete="name" ...>
+              <input type="text" id="fullName" placeholder="Enter your first name as on the guest list" oninput="_onNameInput()" autocomplete="off" required>
               <p class="name-error hidden" id="nameError"></p>
             </div>
-            <div class="form-group">
+            <div class="form-group hidden" id="emailGroup">
               <label for="email">Email Address</label>
               <input type="email" id="email" placeholder="your.email@example.com" required>
               <p class="form-help">Your confirmation will be sent here</p>
@@ -924,7 +924,7 @@
               <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="1.8"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
             </div>
             <div class="sponsor-info">
-              <h3 class="sponsor-name">Andrei Labasan</h3>
+              <h3 class="sponsor-name">Jenny Labasan</h3>
               <p class="sponsor-role">Bridal Gown Attire, Styling, and Florals Sponsor</p>
               <p class="sponsor-contribution">Weaving elegance into her look and breathing life into our venue for the day we say 'I do'.</p>
             </div>
