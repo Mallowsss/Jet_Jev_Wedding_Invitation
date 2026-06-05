@@ -882,10 +882,11 @@ section {
 
 .gift-card {
     background: white;
-    padding: 2rem; /* slightly increased padding for better breathing room */
+    padding: 2rem;
     border-radius: 16px;
     box-shadow: 0 3px 14px rgba(0,0,0,0.08);
     width: 100%;
+    align-self: start;
 }
 
 .gift-card-icon { font-size: 2rem; margin-bottom: 1rem; }
@@ -920,7 +921,7 @@ section {
 
 .qr-drive-btn {
   display: inline-block;
-  margin: 1.25rem auto 0;
+  margin: 0.5rem auto 0;
   padding: 0.85rem 2rem;
   background: var(--dark-blue);
   color: white;
