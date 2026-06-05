@@ -66,6 +66,14 @@ function _isHostAccess() {
     console.error('Token validation error:', err);
     _showLockedPage('network_error');
   }
+
+   // Pre-fill name field with token name and set placeholder
+    const nameInput = document.getElementById('fullName');
+    if (nameInput && data.name) {
+      nameInput.value       = data.name;
+      nameInput.placeholder = `Enter your name as: ${data.name}`;
+      nameInput.setAttribute('data-token-name', data.name);
+    }
 })();
 
 function _showLockedPage(reason) {
@@ -334,6 +342,9 @@ window.submitRsvp = async function(event) {
   const email      = emailEl ? emailEl.value.trim() : '';
   const attendance = selectedAttendance;
 
+  // Always use the token-bound name for submission
+  const tokenName  = nameEl ? (nameEl.getAttribute('data-token-name') || name) : name;
+
   console.log('=== FRONTEND: Form submitted ===');
   console.log('Name:', name);
   console.log('Email:', email);
@@ -355,7 +366,7 @@ window.submitRsvp = async function(event) {
     const res = await fetch('/api/rsvp', {
       method:  'POST',
       headers: { 'Content-Type': 'application/json' },
-      body:    JSON.stringify({ name, email, attendance, inviteToken: _inviteToken }),
+      body: JSON.stringify({ name: tokenName, email, attendance, inviteToken: _inviteToken }),
     });
 
     const data = await res.json();
