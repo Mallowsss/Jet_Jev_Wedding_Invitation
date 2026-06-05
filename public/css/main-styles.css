@@ -875,7 +875,7 @@ section {
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 1.5rem;
-  align-items: stretch;
+  align-items: center; /* Changed from 'stretch' to vertically center items */
   justify-content: center;
   width: 100%;
 }
@@ -887,8 +887,7 @@ section {
     border-radius: 16px;
     box-shadow: 0 3px 14px rgba(0,0,0,0.08);
     width: 100%;
-    align-self: start;
-    margin: 0 auto;
+    /* Removed 'align-self: start;' so it listens to the grid's vertical centering */
 }
 
 .gift-card:last-child {
