@@ -4,6 +4,7 @@
    Fixed: Google Maps syntax, scroll performance, and element safeguards.
    Added: Device Binding & Updatable RSVPs
    Added: Token-bound name validation with typo detection
+   Added: In-app browser detection to enforce external browser usage
    ============================================= */
 
 // ═══════════════════════════════════════════════════════════════
@@ -20,10 +21,33 @@ function _isHostAccess() {
   return isLocal || params.get('host') === 'true';
 }
 
+// ═══════════════════════════════════════════════════════════════
+//  IN-APP BROWSER DETECTION
+// ═══════════════════════════════════════════════════════════════
+function _isInAppBrowser() {
+  const ua = navigator.userAgent || navigator.vendor || window.opera;
+  // Detects Facebook, Instagram, Line, WeChat, and Snapchat in-app browsers
+  return (
+    ua.indexOf("FBAN") > -1 || 
+    ua.indexOf("FBAV") > -1 || 
+    ua.indexOf("Instagram") > -1 || 
+    ua.indexOf("Line") > -1 ||
+    ua.indexOf("MicroMessenger") > -1 || 
+    ua.indexOf("Snapchat") > -1
+  );
+}
+
 (async function validateInviteToken() {
   if (_isHostAccess()) {
     console.log('🔓 Host/dev access — token check skipped.');
     return;
+  }
+
+  // 🔴 Stop execution if they are in Messenger/Instagram
+  if (_isInAppBrowser()) {
+    console.log('📱 In-app browser detected. Forcing external browser.');
+    _showLockedPage('in_app_browser');
+    return; // Stop here so the token is NEVER sent to the server
   }
 
   const params = new URLSearchParams(window.location.search);
@@ -103,6 +127,10 @@ function _showLockedPage(reason) {
 
 function _lockScreenHTML(reason) {
   const messages = {
+    in_app_browser: { 
+      title: 'Action Required 🌐', 
+      body: 'To view your personalized invitation securely, please tap the three dots <b>[ ⋮ ]</b> or <b>[ ⋯ ]</b> in the top right corner and select <b>"Open in Browser"</b>, <b>"Open in Chrome"</b>, or <b>"Open in Safari"</b>.' 
+    },
     no_token:       { title: 'Invitation Required', body: 'This wedding site is only accessible through a personal invitation link. If you received one, please use the link from your invitation.' },
     invalid_token:  { title: 'Invalid Invitation',  body: 'This invitation link is not valid. Please check the link you received, or contact the couple if you believe this is an error.' },
     already_claimed:{ title: 'Link Already Used',   body: 'This personalized invitation link has already been opened on another device. For security, links cannot be shared.' },
