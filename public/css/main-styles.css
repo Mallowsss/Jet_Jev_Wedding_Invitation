@@ -888,6 +888,7 @@ section {
     box-shadow: 0 3px 14px rgba(0,0,0,0.08);
     width: 100%;
     align-self: start;
+    margin: 0 auto;
 }
 
 .gift-card:last-child {
