@@ -1144,16 +1144,6 @@ section {
     transition: all 0.3s;
 }
 
-.name-error {
-  color: #c0392b;
-  font-size: 0.82rem;
-  margin-top: 0.4rem;
-  font-weight: 500;
-}
-.name-error.success {
-  color: #4a7c59;
-}
-
 .submit-btn:hover { transform: translateY(-2px); box-shadow: 0 6px 16px rgba(0,0,0,0.3); }
 
 /* --- Back / Close buttons --- */
@@ -2503,4 +2493,15 @@ footer .footer-details { font-size: 0.875rem; opacity: 0.8; }
   .sponsors-grid-secondary {
     grid-template-columns: repeat(2, 1fr);
   }
+}
+
+/* ── Name validation error ── */
+.name-error {
+  font-size: 0.82rem;
+  margin-top: 0.4rem;
+  font-weight: 500;
+  color: #c0392b;
+}
+.name-error.success {
+  color: #4a7c59;
 }
