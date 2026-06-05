@@ -699,83 +699,94 @@ section {
 
 .map-btn:hover { transform: translateY(-2px); box-shadow: 0 6px 16px rgba(0,0,0,0.3); }
 
-/* =============================================
-   CUSTOM PALETTE CARD (Replaces .attire-image)
-   ============================================= */
-.attire-palette-card {
+/* Container holding both the card and the image */
+.attire-container {
   display: flex;
-  flex-direction: column;
-  justify-content: center;
-  background: white; /* Matches the left card */
-  padding: 1.5rem;   /* Matches the left card */
-  border-radius: 16px; /* Matches the left card */
-  box-shadow: 0 3px 14px rgba(0,0,0,0.08); /* Matches the left card */
-  box-sizing: border-box;
-  height: 100%;
+  flex-wrap: wrap; /* Allows stacking on smaller screens */
+  gap: 2rem;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 2rem;
+  background-color: #C4D8E5; /* Matches the background in your design */
+  font-family: serif; /* Adjust to your specific font */
 }
 
-.palette-stack {
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
-  height: 100%;
-  justify-content: space-between;
-}
-
-.color-row {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  padding: 1rem 1.5rem;
-  border-radius: 12px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+/* Left Card Styling */
+.attire-card-left {
   flex: 1;
-  min-height: 70px;
+  min-width: 320px;
+  background-color: #ffffff;
+  padding: 2.5rem;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
 }
 
-.color-row:hover {
-  transform: translateY(-3px);
-  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+.attire-card-left h2 {
+  text-align: center;
+  color: #A7C7E7;
+  font-size: 2.5rem;
+  margin-top: 0;
+  margin-bottom: 2rem;
 }
 
-.color-name {
-  font-family: var(--font-display);
+.section-block {
+  margin-bottom: 2rem;
+}
+
+.section-block h3 {
+  font-size: 1.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.section-block h4 {
   font-size: 1.25rem;
-  font-style: italic;
-  font-weight: 500;
-  margin-bottom: 4px;
+  margin: 0.5rem 0;
 }
 
-.color-hex {
-  font-family: var(--font-body);
-  font-size: 0.75rem;
-  letter-spacing: 0.15em;
-  text-transform: uppercase;
-  font-weight: 600;
-  opacity: 0.9;
+/* Color Palette Swatches */
+.palette-swatches {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 1.5rem;
+  gap: 10px;
+  text-align: center;
 }
 
-/* Ensure the grid stretches both cards to be equal height */
-.attire-grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 1.5rem;
-  align-items: stretch; /* Forces left and right cards to match height */
+.swatch-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-size: 0.8rem;
+  color: #333;
+  font-family: sans-serif;
+}
+
+.swatch-item .circle {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  margin-bottom: 0.5rem;
+}
+
+/* Right Image Container Styling */
+.attire-image-right {
+  flex: 1;
+  min-width: 320px;
+  border-radius: 12px;
+  overflow: hidden; /* Keeps the image inside the rounded corners */
+  display: flex;
+}
+
+/* 
+  The Magic CSS for the Image!
+  This makes the image fill the container entirely without warping.
+*/
+.attire-image-right img {
   width: 100%;
+  height: 100%;
+  object-fit: cover; 
+  object-position: center; /* Keeps the focus on the center of the image */
 }
-
-/* Mobile Adjustments */
-@media (max-width: 768px) {
-  .attire-palette-card {
-    padding: 1.5rem;
-  }
-  .color-row {
-    padding: 1rem 1.5rem;
-    min-height: 60px;
-  }
-}
-
 /* =============================================
    GIFTS SECTION
    ============================================= */
