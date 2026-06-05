@@ -2,12 +2,12 @@
   {
     "name": "Jethro",
     "category": "GROOM",
-    "table": 1
+    "table": null
   },
   {
     "name": "Jeverlyn",
     "category": "BRIDE",
-    "table": 1
+    "table": null
   },
   {
     "name": "Vince",
@@ -27,7 +27,7 @@
   {
     "name": "Philip",
     "category": "WITNESS/ES",
-    "table": "VIP 2"
+    "table": "VIP 1"
   },
   {
     "name": "Jessa",
@@ -70,7 +70,7 @@
     "table": "VIP 1"
   },
   {
-    "name": "Jenny",
+    "name": "Andrei",
     "category": "BRIDESMAID",
     "table": "VIP 1"
   },
@@ -92,12 +92,12 @@
   {
     "name": "Larry",
     "category": "GROOMSMEN",
-    "table": 2
+    "table": 4
   },
   {
-    "name": "Jude",
+    "name": "Charlestone",
     "category": "GROOMSMEN",
-    "table": 2
+    "table": 4
   },
   {
     "name": "Matt",
@@ -117,12 +117,12 @@
   {
     "name": "Janine",
     "category": "GROOM'S FAMILY",
-    "table": 4
+    "table": "VIP 2"
   },
   {
     "name": "Mark",
     "category": "GROOM'S FAMILY",
-    "table": 4
+    "table": "VIP 2"
   },
   {
     "name": "Jewel",
@@ -157,7 +157,7 @@
   {
     "name": "Liza",
     "category": "BRIDE'S FAMILY",
-    "table": "VIP 1"
+    "table": 3
   },
   {
     "name": "Ashley",
@@ -322,22 +322,22 @@
   {
     "name": "Juvy",
     "category": "JW",
-    "table": 6
+    "table": 7
   },
   {
     "name": "Janine",
     "category": "JW",
-    "table": 7
+    "table": 8
   },
   {
     "name": "Anie",
     "category": "JW",
-    "table": 7
+    "table": 8
   },
   {
     "name": "Erica",
     "category": "JW",
-    "table": 7
+    "table": 8
   },
   {
     "name": "Bernadette",
@@ -387,7 +387,7 @@
   {
     "name": "Shei",
     "category": "JW",
-    "table": 6
+    "table": 7
   },
   {
     "name": "LABASAN- Pasay",
@@ -417,12 +417,12 @@
   {
     "name": "Nova",
     "category": "GROOM'S FAMILY",
-    "table": 4
+    "table": 2
   },
   {
     "name": "Adam",
     "category": "GROOM'S FAMILY",
-    "table": 4
+    "table": 2
   },
   {
     "name": "Marilou",
@@ -430,84 +430,84 @@
     "table": 4
   },
   {
-    "name": "Immanuel",
+    "name": "Imanuel",
     "category": "GROOM'S FRIEND",
-    "table": 7
+    "table": 4
   },
   {
     "name": "Danji",
     "category": "GROOM'S FRIEND",
-    "table": 7
+    "table": 4
   },
   {
     "name": "Renato",
     "category": "JW",
-    "table": null
+    "table": 7
   },
   {
     "name": "Carlo",
     "category": "JW",
-    "table": null
+    "table": 6
   },
   {
     "name": "JR",
     "category": "JW",
-    "table": null
+    "table": 7
   },
   {
     "name": "Monica",
     "category": "JW",
-    "table": null
+    "table": 8
   },
   {
     "name": "Diony",
     "category": "JW",
-    "table": null
+    "table": 6
   },
   {
     "name": "Kim",
     "category": "BRIDE'S FRIEND",
-    "table": null
+    "table": 7
   },
   {
     "name": "Joyce",
     "category": "BRIDE'S FRIEND",
-    "table": null
+    "table": 8
   },
   {
     "name": "Danna",
     "category": "BRIDE'S FRIEND",
-    "table": null
+    "table": 8
   },
   {
     "name": "Ef",
     "category": "BRIDE'S FRIEND",
-    "table": null
+    "table": 8
   },
   {
-    "name": "Iseine",
+    "name": "Jherlyn",
     "category": "BRIDE'S FRIEND",
-    "table": null
+    "table": 8
   },
   {
     "name": "Christine",
     "category": "BRIDE'S FRIEND",
-    "table": null
+    "table": 8
   },
   {
     "name": "Elizabeth",
     "category": "BRIDE'S FRIEND",
-    "table": null
+    "table": 8
   },
   {
     "name": "Chloe",
     "category": "",
-    "table": null
+    "table": 2
   },
   {
     "name": "Kira",
     "category": "",
-    "table": null
+    "table": 3
   },
   {
     "name": "Patty",
@@ -515,7 +515,7 @@
     "table": 5
   },
   {
-    "name": "Qwyncy",
+    "name": "Quincy",
     "category": "JW",
     "table": 5
   },
