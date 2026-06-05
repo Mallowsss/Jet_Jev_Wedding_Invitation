@@ -223,20 +223,29 @@ async function sendEmailsAsync(params) {
     } else if (params.type === "not-listed") {
       const { guestName, email, attendance } = params;
 
-      await sgMail.send({
-        from: FROM_EMAIL,
-        to: email,
-        subject: `Thank you for your RSVP — Jet & Jev`,
-        html: notOnListEmailHTML({ guestName }),
-      });
+      try {
+        await sgMail.send({
+          from: FROM_EMAIL,
+          to: email,
+          subject: `Thank you for your RSVP — Jet & Jev`,
+          html: notOnListEmailHTML({ guestName }),
+        });
+        console.log(`  ✅ Guest email sent to ${email}`);
+      } catch (err) {
+        console.error("❌ Guest email failed:", err.message);
+      }
 
-      await sgMail.send({
-        from: FROM_EMAIL,
-        to: HOST_EMAIL,
-        subject: `⚠️ Unlisted RSVP: ${guestName}`,
-        html: hostEmailHTML({ guestName: `${guestName} ⚠️ (NOT ON LIST)`, email, attendance }),
-      });
-      console.log(`⚠️ UNLISTED GUEST: ${guestName}`);
+      try {
+        await sgMail.send({
+          from: FROM_EMAIL,
+          to: HOST_EMAIL,
+          subject: `⚠️ Unlisted RSVP: ${guestName}`,
+          html: hostEmailHTML({ guestName: `${guestName} ⚠️ (NOT ON LIST)`, email, attendance }),
+        });
+        console.log(`  ✅ Host email sent for unlisted: ${guestName}`);
+      } catch (err) {
+        console.error("❌ Host email failed:", err.message);
+      }
     }
   } catch (err) {
     console.error("❌ EMAIL SEND FAILED!", err.message);
@@ -434,6 +443,6 @@ app.listen(PORT, () => {
   console.log(`✅ Server running on port ${PORT}`);
   console.log(`🎟️  Token store: ${fs.existsSync(path.join(__dirname, "data", "tokens.json")) ? "✅ Found" : "❌ Not found — run: node generate-tokens.js"}`);
   console.log(`📧 SendGrid: ${process.env.SENDGRID_API_KEY ? '✅ Configured' : '❌ Not set'}`);
-  console.log(`📮 From Email: ${process.env.SENDGRID_FROM_EMAIL || 'mallows3124@gmail.com'}`);
+  console.log(`📮 From Email: ${process.env.SENDGRID_FROM_EMAIL || 'jeverlyn.labasan26@gmail.com'}`);
   console.log(`🌐 URL: ${process.env.RENDER_EXTERNAL_URL || 'localhost'}`);
 });
