@@ -1259,8 +1259,8 @@ footer .footer-details { font-size: 0.875rem; opacity: 0.8; }
     .attire-grid,
     .gifts-grid { grid-template-columns: 1fr; }
 
-    .attire-grid .attire-card  { order: 1; }
-    .attire-grid .attire-image { order: 2; }
+    .attire-grid .attire-card  { order: 2; }
+    .attire-grid .attire-image { order: 1; }
 
     /* RSVP parallax — tighter travel on mobile */
     .rsvp-section { padding: 4rem 1rem; }
