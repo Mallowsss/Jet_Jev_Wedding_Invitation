@@ -327,6 +327,74 @@ window.resetRsvp = function() {
 };
 
 // -----------------------------------------------
+// NAME VALIDATION
+// -----------------------------------------------
+function _normalizeForCompare(str) {
+  return str.toLowerCase().replace(/\s+/g, ' ').trim();
+}
+
+function _similarEnough(a, b) {
+  // Check if one contains the other (handles partial matches)
+  const na = _normalizeForCompare(a);
+  const nb = _normalizeForCompare(b);
+  if (na === nb) return 'exact';
+  if (na.includes(nb) || nb.includes(na)) return 'close';
+  // Simple typo check: allow 1 character difference via Levenshtein
+  if (Math.abs(na.length - nb.length) <= 2) {
+    let diff = 0;
+    const longer = na.length > nb.length ? na : nb;
+    const shorter = na.length > nb.length ? nb : na;
+    for (let i = 0, j = 0; i < longer.length; i++, j++) {
+      if (longer[i] !== shorter[j]) {
+        diff++;
+        if (longer.length !== shorter.length) j--;
+      }
+      if (diff > 2) break;
+    }
+    if (diff <= 2) return 'close';
+  }
+  return 'no';
+}
+
+window._onNameInput = function() {
+  const nameEl    = document.getElementById('fullName');
+  const errorEl   = document.getElementById('nameError');
+  const emailGrp  = document.getElementById('emailGroup');
+  const submitBtn = document.getElementById('submitBtn');
+  if (!nameEl || !errorEl) return;
+
+  const typed     = nameEl.value.trim();
+  const tokenName = nameEl.getAttribute('data-token-name') || '';
+
+  if (!typed) {
+    errorEl.textContent = '';
+    errorEl.className   = 'name-error hidden';
+    emailGrp?.classList.add('hidden');
+    submitBtn?.classList.add('hidden');
+    return;
+  }
+
+  const match = _similarEnough(typed, tokenName);
+
+  if (match === 'exact') {
+    errorEl.textContent = '✓ Name matched!';
+    errorEl.className   = 'name-error success';
+    emailGrp?.classList.remove('hidden');
+    submitBtn?.classList.remove('hidden');
+  } else if (match === 'close') {
+    errorEl.textContent = `Did you mean "${tokenName}"? Please check your spelling.`;
+    errorEl.className   = 'name-error';
+    emailGrp?.classList.add('hidden');
+    submitBtn?.classList.add('hidden');
+  } else {
+    errorEl.textContent = `That name doesn't match your invitation. Please enter the name on your invite.`;
+    errorEl.className   = 'name-error';
+    emailGrp?.classList.add('hidden');
+    submitBtn?.classList.add('hidden');
+  }
+};
+
+// -----------------------------------------------
 // RSVP FORM SUBMISSION
 // -----------------------------------------------
 window.submitRsvp = async function(event) {
