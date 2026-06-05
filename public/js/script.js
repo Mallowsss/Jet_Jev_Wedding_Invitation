@@ -56,6 +56,14 @@ function _isHostAccess() {
       greetEl.closest('[id^="inviteGreeting"]')?.classList.remove('hidden');
     }
 
+    // Pre-fill name field with token name and set placeholder
+    const nameInput = document.getElementById('fullName');
+    if (nameInput && data.name) {
+      nameInput.value       = data.name;
+      nameInput.placeholder = `Enter your name as: ${data.name}`;
+      nameInput.setAttribute('data-token-name', data.name);
+    }
+
     // Change button text if they've already RSVP'd
     if (data.rsvpDone) {
       const btn = document.getElementById('submitBtn');
@@ -66,14 +74,6 @@ function _isHostAccess() {
     console.error('Token validation error:', err);
     _showLockedPage('network_error');
   }
-
-   // Pre-fill name field with token name and set placeholder
-    const nameInput = document.getElementById('fullName');
-    if (nameInput && data.name) {
-      nameInput.value       = data.name;
-      nameInput.placeholder = `Enter your name as: ${data.name}`;
-      nameInput.setAttribute('data-token-name', data.name);
-    }
 })();
 
 function _showLockedPage(reason) {
