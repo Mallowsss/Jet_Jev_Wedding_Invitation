@@ -890,6 +890,14 @@ section {
     align-self: start;
 }
 
+.gift-card:last-child {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
 .gift-card-icon { font-size: 2rem; margin-bottom: 1rem; }
 
 .gift-card h3 {
@@ -921,7 +929,8 @@ section {
 }
 
 .qr-drive-btn {
-  display: inline-block;
+  display: block;
+  width: fit-content;
   margin: 0.5rem auto 0;
   padding: 0.85rem 2rem;
   background: var(--dark-blue);
