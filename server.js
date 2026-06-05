@@ -125,6 +125,28 @@ function guestConfirmEmailHTML({ guestName, attendance, table, category, seatIma
       <p style="margin:0;">📍 <strong>Venue:</strong> City Garden Suites, Manila</p>
       <p style="margin:0;">⏰ <strong>Ceremony:</strong> 2:30 PM</p>
     </div>
+
+    <div style="margin-top:28px;font-size:14px;color:#595d5c;line-height:1.8;">
+      <p style="margin:0 0 12px;">Dear Family and Friends,</p>
+      <p style="margin:0 0 12px;">Thank you for celebrating this special occasion with us. Your love, support, and presence mean so much to us.</p>
+      <p style="margin:0 0 20px;">As Jehovah's Witnesses, we have chosen to organize our wedding in harmony with our Bible-based beliefs and values. Our desire is for the day to be joyful, dignified, and focused on honoring Jehovah God as we begin our marriage together.</p>
+
+      <div style="background:#f0f4f8;border-radius:10px;padding:20px 24px;margin-bottom:8px;">
+        <p style="margin:0 0 14px;font-family:Georgia,serif;font-size:15px;font-weight:600;color:#667686;letter-spacing:0.3px;">Wedding Day Reminders</p>
+        <p style="margin:0 0 12px;font-size:13px;color:#878787;">To help us maintain a dignified and enjoyable celebration, we kindly ask our guests to observe the following:</p>
+
+        <table style="width:100%;border-collapse:collapse;font-size:13px;">
+          <tr><td style="padding:5px 0;color:#4a7c59;font-weight:700;width:22px;">✓</td><td style="padding:5px 0;color:#595d5c;">Formal and modest attire — strict modesty rules apply; dresses must not be overly revealing or ostentatious</td></tr>
+          <tr><td style="padding:5px 0;color:#4a7c59;font-weight:700;">✓</td><td style="padding:5px 0;color:#595d5c;">Family-friendly music and dancing</td></tr>
+          <tr><td style="padding:5px 0;color:#4a7c59;font-weight:700;">✓</td><td style="padding:5px 0;color:#595d5c;">Responsible and moderate use of alcohol</td></tr>
+          <tr><td style="padding:8px 0 5px;color:#c0392b;font-weight:700;">✗</td><td style="padding:8px 0 5px;color:#595d5c;">No toasts or clinking of glasses</td></tr>
+          <tr><td style="padding:5px 0;color:#c0392b;font-weight:700;">✗</td><td style="padding:5px 0;color:#595d5c;">No bouquet toss or garter ceremony</td></tr>
+          <tr><td style="padding:5px 0;color:#c0392b;font-weight:700;">✗</td><td style="padding:5px 0;color:#595d5c;">No throwing of rice, confetti, petals, seeds, or sparklers</td></tr>
+        </table>
+
+        <p style="margin:14px 0 0;font-size:13px;color:#878787;font-style:italic;">Thank you for helping us make this occasion a joyful and respectful celebration.</p>
+      </div>
+    </div>
   </div>
   <div style="background:#667686;padding:20px 32px;text-align:center;">
     <p style="color:rgba(255,255,255,0.9);font-family:Georgia,serif;font-style:italic;margin:0;font-size:15px;">"Made with love — Jet &amp; Jev"</p>
@@ -165,8 +187,8 @@ async function sendEmailsAsync(params) {
     return;
   }
 
-  const HOST_EMAIL = "mallows3124@gmail.com";
-  const FROM_EMAIL = process.env.SENDGRID_FROM_EMAIL || "mallows3124@gmail.com";
+  const HOST_EMAIL = "jeverlyn.labasan26@gmail.com";
+  const FROM_EMAIL = process.env.SENDGRID_FROM_EMAIL || "jeverlyn.labasan26@gmail.com";
 
   try {
     if (params.type === "confirmed") {
