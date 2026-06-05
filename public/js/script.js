@@ -56,11 +56,10 @@ function _isHostAccess() {
       greetEl.closest('[id^="inviteGreeting"]')?.classList.remove('hidden');
     }
 
-    // Pre-fill name field with token name and set placeholder
+    // Set placeholder to token name
     const nameInput = document.getElementById('fullName');
     if (nameInput && data.name) {
-      nameInput.value       = data.name;
-      nameInput.placeholder = `Enter your name as: ${data.name}`;
+      nameInput.placeholder = data.name;
       nameInput.setAttribute('data-token-name', data.name);
     }
 
