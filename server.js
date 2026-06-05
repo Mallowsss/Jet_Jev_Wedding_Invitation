@@ -245,6 +245,7 @@ app.get("/api/test", (req, res) => {
 /**
  * GET /api/validate-token?invite=<token>&deviceId=<string>
  * Called by the frontend on page load.
+ * Validates the token and binds it to the user's specific browser/device.
  */
 app.get("/api/validate-token", (req, res) => {
   const { invite, deviceId } = req.query;
@@ -262,11 +263,12 @@ app.get("/api/validate-token", (req, res) => {
 
   // ── CASE A: First time claiming the token ──
   if (!entry.claimed) {
+    // Generate a new, unique ID for this device
     const newDeviceId = crypto.randomBytes(16).toString('hex');
     
     entry.claimed   = true;
     entry.claimedAt = new Date().toISOString();
-    entry.deviceIds = [newDeviceId]; // CHANGED: Now using an array
+    entry.deviceId  = newDeviceId; 
     
     tokens[invite]  = entry;
     saveTokens(tokens);
@@ -286,48 +288,40 @@ app.get("/api/validate-token", (req, res) => {
 
   // ── CASE B: Token already claimed, verify the device ──
   if (entry.claimed) {
-    // Backwards compatibility fallback just in case old tokens exist
-    if (!entry.deviceIds) {
-      entry.deviceIds = entry.deviceId ? [entry.deviceId] : [];
-    }
-
-    // 1. Check if the current browser's deviceId is already on the approved list
-    if (deviceId && entry.deviceIds.includes(deviceId)) {
-      return res.json({
-        valid:     true,
-        name:      entry.name,
-        category:  entry.category,
-        table:     entry.table,
-        claimed:   entry.claimed,
-        rsvpDone:  entry.rsvpDone,
-      });
-    } 
-    // 2. If it's a NEW browser, but they haven't exceeded the limit (e.g., 3 browsers)
-    else if (entry.deviceIds.length < 3) {
-      const newDeviceId = crypto.randomBytes(16).toString('hex');
-      entry.deviceIds.push(newDeviceId); // Add this new browser to the allowed list
-      
-      tokens[invite] = entry;
-      saveTokens(tokens);
-      
-      console.log(`🎟️ Token opened in a new browser (Total: ${entry.deviceIds.length}/3) for: ${entry.name}`);
-      
-      return res.json({
-        valid:     true,
-        deviceId:  newDeviceId, // Send the new ID back to save in Chrome/Safari's localStorage
-        name:      entry.name,
-        category:  entry.category,
-        table:     entry.table,
-        claimed:   entry.claimed,
-        rsvpDone:  entry.rsvpDone,
-      });
-    } 
-    // 3. If they try to open it on a 4th completely different browser, lock it down
-    else {
-      console.log(`🔒 Blocked access: ${entry.name}'s token reached the maximum browser limit.`);
+    if (!deviceId || deviceId !== entry.deviceId) {
+      console.log(`🔒 Blocked access: ${entry.name}'s token opened on a different device.`);
       return res.status(403).json({ valid: false, reason: "already_claimed" });
     }
+    
+    return res.json({
+      valid:     true,
+      name:      entry.name,
+      category:  entry.category,
+      table:     entry.table,
+      claimed:   entry.claimed,
+      rsvpDone:  entry.rsvpDone,
+    });
   }
+});
+
+/**
+ * GET /api/token-status?invite=<token>
+ * Lightweight check — does NOT mutate claimed status.
+ */
+app.get("/api/token-status", (req, res) => {
+  const { invite } = req.query;
+  if (!invite) return res.status(400).json({ valid: false });
+
+  const tokens = loadTokens();
+  const entry  = tokens[invite];
+  if (!entry) return res.status(404).json({ valid: false, reason: "invalid_token" });
+
+  return res.json({
+    valid:    true,
+    name:     entry.name,
+    claimed:  entry.claimed,
+    rsvpDone: entry.rsvpDone,
+  });
 });
 
 // ── RSVP API ──────────────────────────────────────────────────────────────────
