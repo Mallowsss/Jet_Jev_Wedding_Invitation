@@ -763,28 +763,7 @@ section {
     border: 2px solid white;
     box-shadow: 0 2px 8px rgba(0,0,0,0.15);
 }
- 
-.attire-image {
-    width: 100%;
-    height: clamp(260px, 32vw, 420px);
-    border-radius: 16px;
-    overflow: hidden;
-    box-shadow: 0 6px 24px rgba(0,0,0,0.15);
-    position: relative;
-    box-sizing: border-box;
-}
- 
-.attire-image img { width: 100%; height: 100%; object-fit: cover; }
- 
-.attire-image-caption {
-    position: absolute;
-    bottom: 0; left: 0; right: 0;
-    padding: 1rem;
-    background: linear-gradient(to top, rgba(0,0,0,0.7) 0%, transparent 100%);
-    color: white;
-    text-align: center;
-    font-style: italic;
-}
+
  
 /* ── Attire Palette Card ── */
 .attire-palette-card {
@@ -1260,7 +1239,7 @@ footer .footer-details { font-size: 0.875rem; opacity: 0.8; }
     .gifts-grid { grid-template-columns: 1fr; }
 
     .attire-grid .attire-card  { order: 2; }
-    .attire-grid .attire-image { order: 1; }
+    .attire-grid .attire-palette-card { order: 1; }
 
     /* RSVP parallax — tighter travel on mobile */
     .rsvp-section { padding: 4rem 1rem; }
@@ -1295,10 +1274,6 @@ footer .footer-details { font-size: 0.875rem; opacity: 0.8; }
         min-height: 160px;
     }
 
-    /* Fix 3: Attire image height on mobile */
-    .attire-image {
-        height: clamp(200px, 55vw, 280px);
-    }
 
     /* Fix 4: Countdown photos stack 1 col on smallest, 3 col fine on tablet */
     .countdown-photos {
@@ -2158,7 +2133,7 @@ footer .footer-details { font-size: 0.875rem; opacity: 0.8; }
     display: flex !important;
     flex-direction: column;
   }
-  .attire-grid .attire-image {
+  .attire-grid .attire-palette-card {
     order: 2;
     height: clamp(200px, 50vw, 320px);
   }
