@@ -48,19 +48,6 @@ function findGuest(submittedName) {
   ) || null;
 }
 
-/** Get seat image URL - looks for /public/seat-images/{name}.jpg */
-function getSeatImageUrl(guestName) {
-  const filename = guestName.toLowerCase().replace(/\s+/g, "-") + ".jpg";
-  const filepath = path.join(__dirname, "public", "seat-images", filename);
-  
-  if (fs.existsSync(filepath)) {
-    return `/seat-images/${filename}`;
-  }
-  
-  // Default placeholder
-  return "https://placehold.co/600x400/e8eff5/667686?text=Table+Seating+%F0%9F%A5%82%0A(Chart+coming+soon)";
-}
-
 // ── Email HTML ────────────────────────────────────────────────────────────────
 
 function hostEmailHTML({ guestName, email, attendance }) {
@@ -87,21 +74,15 @@ function hostEmailHTML({ guestName, email, attendance }) {
 </div>`;
 }
 
-function guestConfirmEmailHTML({ guestName, attendance, table, category, seatImageUrl, renderUrl }) {
+function guestConfirmEmailHTML({ guestName, attendance, table, category }) {
   const isInPerson = attendance === "in-person";
   const firstName  = guestName.split(" ")[0];
-  
-  const fullImageUrl = seatImageUrl.startsWith("http") ? seatImageUrl : renderUrl + seatImageUrl;
 
   const seatBlock = isInPerson ? `
     <div style="background:#f0f4f8;border-radius:10px;padding:22px 24px;margin:24px 0;text-align:center;">
       <p style="margin:0 0 6px;color:#878787;font-size:12px;text-transform:uppercase;letter-spacing:1px;">Your Assigned Seat</p>
       <p style="margin:0;font-family:Georgia,serif;font-size:36px;font-weight:700;color:#667686;">Table ${table || "TBA"}</p>
       ${category ? `<p style="margin:6px 0 0;color:#97adc2;font-size:13px;">${category}</p>` : ""}
-      <div style="margin-top:18px;">
-        <img src="${fullImageUrl}" alt="Seat Assignment" style="width:100%;max-width:600px;border-radius:8px;border:1px solid #d1d1d1;">
-        <p style="font-size:11px;color:#bbb;margin:8px 0 0;font-style:italic;">Your seating assignment</p>
-      </div>
     </div>` : `
     <div style="background:#f0f4f8;border-radius:10px;padding:22px 24px;margin:24px 0;text-align:center;">
       <p style="margin:0 0 8px;color:#878787;font-size:12px;text-transform:uppercase;letter-spacing:1px;">Joining Online</p>
@@ -192,7 +173,7 @@ async function sendEmailsAsync(params) {
 
   try {
     if (params.type === "confirmed") {
-      const { guestName, email, attendance, table, category, seatImageUrl, renderUrl, isUpdate } = params;
+      const { guestName, email, attendance, table, category, isUpdate } = params;
 
       // Switch subject line if this is an update
       const hostSubject = isUpdate
@@ -215,7 +196,7 @@ async function sendEmailsAsync(params) {
         from: FROM_EMAIL,
         to: email,
         subject: guestSubject,
-        html: guestConfirmEmailHTML({ guestName, attendance, table, category, seatImageUrl, renderUrl }),
+        html: guestConfirmEmailHTML({ guestName, attendance, table, category }),
       });
       console.log(`  ✅ Guest email sent to ${email}`);
       console.log(`✅ ALL EMAILS SENT for: ${guestName}`);
@@ -394,12 +375,9 @@ app.post("/api/rsvp", async (req, res) => {
   saveTokens(tokens);
   console.log(`✅ Token RSVP ${isUpdate ? 'UPDATED' : 'LOCKED'}: ${entry.name}`);
 
-  const renderUrl = process.env.RENDER_EXTERNAL_URL || `http://localhost:${PORT}`;
-
   // ⚡ RESPOND IMMEDIATELY
   if (isOnList) {
     const { table, category } = guest;
-    const seatImageUrl = getSeatImageUrl(guest.name);
     
     res.json({ success: true, onList: true, table, category, isUpdate });
     
@@ -411,8 +389,6 @@ app.post("/api/rsvp", async (req, res) => {
         attendance, 
         table, 
         category, 
-        seatImageUrl, 
-        renderUrl,
         isUpdate
       }).catch(err => console.error("❌ Email failed:", err.message));
     });
