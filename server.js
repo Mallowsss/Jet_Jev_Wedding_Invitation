@@ -377,9 +377,10 @@ app.post("/api/rsvp", async (req, res) => {
   // Check if this is an update or a new RSVP
   const isUpdate = entry.rsvpDone === true;
 
-  // ── Look up guest in database ─────────────────────────────────
-  const guest    = findGuest(name);
-  const isOnList = !!guest;
+  // ── Look up guest by TOKEN name (not submitted name) ──────────
+  const tokenName = entry.name;
+  const guest     = findGuest(tokenName);
+  const isOnList  = !!guest;
 
   console.log("🔍 Guest lookup result:", isOnList ? "FOUND" : "NOT FOUND");
   if (isOnList) {
@@ -405,7 +406,7 @@ app.post("/api/rsvp", async (req, res) => {
     process.nextTick(() => {
       sendEmailsAsync({ 
         type: "confirmed", 
-        guestName: name, 
+        guestName: tokenName, 
         email, 
         attendance, 
         table, 
@@ -422,7 +423,7 @@ app.post("/api/rsvp", async (req, res) => {
     process.nextTick(() => {
       sendEmailsAsync({ 
         type: "not-listed", 
-        guestName: name, 
+        guestName: tokenName, 
         email, 
         attendance 
       }).catch(err => console.error("❌ Email failed:", err.message));
