@@ -1144,6 +1144,16 @@ section {
     transition: all 0.3s;
 }
 
+.name-error {
+  color: #c0392b;
+  font-size: 0.82rem;
+  margin-top: 0.4rem;
+  font-weight: 500;
+}
+.name-error.success {
+  color: #4a7c59;
+}
+
 .submit-btn:hover { transform: translateY(-2px); box-shadow: 0 6px 16px rgba(0,0,0,0.3); }
 
 /* --- Back / Close buttons --- */
