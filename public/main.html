@@ -601,39 +601,49 @@
       ];
 
       let currentLightboxIndex = 0;
-
+ 
+      // Try .jpg first; fall back to .JPG (Linux servers are case-sensitive)
+      function resolveExt(folder, name, callback) {
+        const probe = new Image();
+        probe.onload  = () => callback(`${folder}/${name}.jpg`);
+        probe.onerror = () => callback(`${folder}/${name}.JPG`);
+        probe.src = `${folder}/${name}.jpg`;
+      }
+ 
       const grid = document.getElementById('prenupGrid');
       prenupFiles.forEach((name, i) => {
-        const src = `prenup_edited/${name}.jpg` || `prenup_edited/${name}.JPG`;
         const div = document.createElement('div');
         div.className = 'photo-item reveal';
-        div.style.backgroundImage = `url('${src}')`;
         div.style.cursor = 'pointer';
         div.onclick = () => openLightbox(i);
         div.innerHTML = `<div class="photo-overlay"><span>Jet &amp; Jev</span></div>`;
         grid.appendChild(div);
+ 
+        resolveExt('prenup_edited', name, (src) => {
+          div.style.backgroundImage = `url('${src}')`;
+        });
       });
-
+ 
       window.openLightbox = function(index) {
         currentLightboxIndex = index;
         const lb = document.getElementById('lightbox');
         const img = document.getElementById('lightboxImg');
-        img.src = `prenup_photos/${prenupFiles[index]}.JPG`;
         lb.classList.remove('hidden');
         document.body.style.overflow = 'hidden';
+        resolveExt('prenup_edited', prenupFiles[index], (src) => { img.src = src; });
       };
-
+ 
       window.closeLightbox = function() {
         document.getElementById('lightbox').classList.add('hidden');
         document.body.style.overflow = '';
       };
-
+ 
       window.lightboxNav = function(dir, e) {
         e.stopPropagation();
         currentLightboxIndex = (currentLightboxIndex + dir + prenupFiles.length) % prenupFiles.length;
         document.getElementById('lightboxImg').src = `prenup_photos/${prenupFiles[currentLightboxIndex]}.JPG`;
       };
-
+ 
       document.addEventListener('keydown', function(e) {
         const lb = document.getElementById('lightbox');
         if (lb.classList.contains('hidden')) return;
@@ -643,7 +653,6 @@
       });
     })();
     </script>
-
     <footer>
       <p>Made with love — Jet &amp; Jev</p>
       <p class="footer-details">June 29, 2026 • City Garden Suites, Manila</p>
