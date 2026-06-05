@@ -2155,6 +2155,8 @@ footer .footer-details { font-size: 0.875rem; opacity: 0.8; }
   .attire-grid {
     grid-template-columns: 1fr !important;
     gap: 1.5rem;
+    display: flex !important;
+    flex-direction: column;
   }
   .attire-grid .attire-image {
     order: 2;
