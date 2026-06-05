@@ -226,7 +226,7 @@ function updateCountdown() {
   const now        = new Date().getTime();
   const difference = targetDate - now;
   if (difference > 0) {
-    renderDigits('days',    Math.floor(difference / (1000 * 60 * 60 * 24)), 3);
+    renderDigits('days',    Math.floor(difference / (1000 * 60 * 60 * 24)), 2);
     renderDigits('hours',   Math.floor((difference / (1000 * 60 * 60)) % 24), 2);
     renderDigits('minutes', Math.floor((difference / 1000 / 60) % 60), 2);
     renderDigits('seconds', Math.floor((difference / 1000) % 60), 2);
