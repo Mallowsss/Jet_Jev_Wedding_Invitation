@@ -2157,11 +2157,11 @@ footer .footer-details { font-size: 0.875rem; opacity: 0.8; }
     gap: 1.5rem;
   }
   .attire-grid .attire-image {
-    order: 1;
+    order: 2;
     height: clamp(200px, 50vw, 320px);
   }
   .attire-grid .attire-card {
-    order: 2;
+    order: 1;
   }
   .attire-wrapper {
     padding: 0;
