@@ -624,14 +624,21 @@
         });
       });
  
+      // Open lightbox — stop propagation so clicking the image doesn't close it
       window.openLightbox = function(index) {
         currentLightboxIndex = index;
-        const lb = document.getElementById('lightbox');
+        const lb  = document.getElementById('lightbox');
         const img = document.getElementById('lightboxImg');
+        img.src = '';  // clear while loading
         lb.classList.remove('hidden');
         document.body.style.overflow = 'hidden';
         resolveExt('prenup_edited', prenupFiles[index], (src) => { img.src = src; });
       };
+ 
+      // Close only when clicking the dark backdrop — not the image or buttons
+      document.getElementById('lightbox').addEventListener('click', function(e) {
+        if (e.target === this) window.closeLightbox();
+      });
  
       window.closeLightbox = function() {
         document.getElementById('lightbox').classList.add('hidden');
@@ -641,18 +648,31 @@
       window.lightboxNav = function(dir, e) {
         e.stopPropagation();
         currentLightboxIndex = (currentLightboxIndex + dir + prenupFiles.length) % prenupFiles.length;
-        document.getElementById('lightboxImg').src = `prenup_photos/${prenupFiles[currentLightboxIndex]}.JPG`;
+        const img = document.getElementById('lightboxImg');
+        img.src = '';
+        resolveExt('prenup_edited', prenupFiles[currentLightboxIndex], (src) => { img.src = src; });
       };
  
       document.addEventListener('keydown', function(e) {
         const lb = document.getElementById('lightbox');
         if (lb.classList.contains('hidden')) return;
-        if (e.key === 'ArrowRight') window.lightboxNav(1, { stopPropagation: () => {} });
+        if (e.key === 'ArrowRight') window.lightboxNav(1,  { stopPropagation: () => {} });
         if (e.key === 'ArrowLeft')  window.lightboxNav(-1, { stopPropagation: () => {} });
-        if (e.key === 'Escape') window.closeLightbox();
+        if (e.key === 'Escape')     window.closeLightbox();
       });
+ 
+      // Touch swipe support for mobile
+      let touchStartX = 0;
+      document.getElementById('lightbox').addEventListener('touchstart', function(e) {
+        touchStartX = e.changedTouches[0].clientX;
+      }, { passive: true });
+      document.getElementById('lightbox').addEventListener('touchend', function(e) {
+        const dx = e.changedTouches[0].clientX - touchStartX;
+        if (Math.abs(dx) > 50) window.lightboxNav(dx < 0 ? 1 : -1, { stopPropagation: () => {} });
+      }, { passive: true });
     })();
     </script>
+    
     <footer>
       <p>Made with love — Jet &amp; Jev</p>
       <p class="footer-details">June 29, 2026 • City Garden Suites, Manila</p>
