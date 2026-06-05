@@ -702,7 +702,12 @@ section {
 =============================================
    ATTIRE SECTION
    ============================================= */
-.attire-section { background: #cfe0eb; min-height: unset; padding: 3rem 1rem; }
+.attire-section { background: #cfe0eb;
+    min-height: unset;
+    padding: 3rem 1rem;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start; }
 
 .attire-wrapper { max-width: 900px; width: 100%; padding: 0; box-sizing: border-box; }
 
